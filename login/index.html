@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Website - Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Enter Passcode</h2>
+        <input type="password" id="passcode-input" placeholder="Enter your passcode">
+        <button onclick="checkPasscode()">Submit</button>
+        <p class="error" id="error-message" style="display: none;">Invalid passcode. Please try again.</p>
+    </div>
+
+    <script>
+        // Sample passcodes for different types of users
+        const passcodes = {
+            guest: '1',
+            groomsman: '2',
+            bridesmaid: '3'
+        };
+
+        // Function to set cookies with an optional path
+        function setCookie(name, value, days, path = '/') {
+            let expires = '';
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = `; expires=${date.toUTCString()}`;
+            }
+            document.cookie = `${name}=${value || ''}${expires}; path=${path}`;
+        }
+
+        function checkPasscode() {
+            const userInput = document.getElementById('passcode-input').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Check the entered passcode and set cookie
+            if (userInput === passcodes.guest) {
+                setCookie('userType', 'guest', 7);
+                // Delay redirect to ensure cookie is set
+                setTimeout(() => { window.location.href = '/home'; }, 100);
+            } else if (userInput === passcodes.groomsman) {
+                setCookie('userType', 'groomsman', 7);
+                setTimeout(() => { window.location.href = '/home'; }, 100);
+            } else if (userInput === passcodes.bridesmaid) {
+                setCookie('userType', 'bridesmaid', 7);
+                setTimeout(() => { window.location.href = '/home'; }, 100);
+            } else {
+                // Show error message if the passcode is invalid
+                errorMessage.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Website - Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Enter Passcode</h2>
+        <input type="password" id="passcode-input" placeholder="Enter your passcode">
+        <button onclick="checkPasscode()">Submit</button>
+        <p class="error" id="error-message" style="display: none;">Invalid passcode. Please try again.</p>
+    </div>
+
+    <script>
+        // Sample passcodes for different types of users
+        const passcodes = {
+            guest: '1',
+            groomsman: '2',
+            bridesmaid: '3'
+        };
+
+        function checkPasscode() {
+            const userInput = document.getElementById('passcode-input').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Check the entered passcode
+            if (userInput === passcodes.guest) {
+                document.cookie = 'userType=guest';
+                window.location.href = '/home';
+            } else if (userInput === passcodes.groomsman) {
+                document.cookie = 'userType=groomsman';
+                window.location.href = '/home';
+            } else if (userInput === passcodes.bridesmaid) {
+                document.cookie = 'userType=bridesmaid';
+                window.location.href = '/home';
+            } else {
+                // Show error message if the passcode is invalid
+                errorMessage.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html> -->

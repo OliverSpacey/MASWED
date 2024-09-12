@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mary and Sam's Wedding information</title>
+    <script>
+        // Function to read cookies
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            console.log(value);
+            const parts = value.split(`; ${name}=`);
+            console.log(parts);
+            if (parts.length > 0) return true;
+            return false;
+        }
+
+        // Redirect early based on logged-in status
+        (function() {
+            const loggedIn = getCookie('isLoggedIn');
+            console.log(loggedIn);
+            if (!loggedIn) {
+                window.location.href = '/login'; // Redirect to login if no valid login cookie
+            }
+        })();
+    </script>
+</head>
+
+<header>
+    <h1>Mary and Sam's Wedding</h1>
+    <!-- Generic Links for all guests -->
+    <a href="/home/">Home</a>
+    <a href="/guest-information/">Guest Information</a>
+    <a href="/venue-information/">Venue Information</a>
+    <a href="/gifts/"">Gifts</a>
+    <a href="/RSVP-form/">RSVP Form</a>
+    <a href="/contact/">Contact us</a>
+
+    <!-- Links for groomsmen, bridesmaids -->
+    <div id = "special" style="display: none;">
+        <div id = "bm" style="display: none;">
+            <a href="/bridal-party/">Bridal Party Information</a>
+        </div>
+        <div id = "gm" style="display: none;">
+            <a href="/grooms-party/">Groom's Party Information</a>
+        </div>
+    </div>
+    <!-- add js scripts -->
+    <!-- <script src="../js/passcodeCheck.js"></script> -->
+    <script src="../js/loadLogin.js"></script>
+    <style src="../stylesheets/home.css"></style>
+</header>

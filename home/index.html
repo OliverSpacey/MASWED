@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mary and Sam's Wedding information</title>
+    <script>
+        // Function to read cookies
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            console.log(value);
+            const parts = value.split(`; ${name}=`);
+            console.log(parts);
+            if (parts.length > 0) return true;
+            return false;
+        }
+
+        // Redirect early based on logged-in status
+        (function() {
+            const loggedIn = getCookie('isLoggedIn');
+            console.log(loggedIn);
+            if (!loggedIn) {
+                window.location.href = '/login'; // Redirect to login if no valid login cookie
+            }
+        })();
+    </script>
+</head>
+
+<header>
+    <h1>Mary and Sam's Wedding</h1>
+    <!-- Generic Links for all guests -->
+    <a href="/home/">Home</a>
+    <a href="/guest-information/">Guest Information</a>
+    <a href="/venue-information/">Venue Information</a>
+    <a href="/gifts/"">Gifts</a>
+    <a href="/RSVP-form/">RSVP Form</a>
+    <a href="/contact/">Contact us</a>
+
+    <!-- Links for groomsmen, bridesmaids -->
+    <div class = "special" style="display: none;">
+        <div class = "bm" style="display: none;">
+            <a href="/bridal-party/">Bridal Party Information</a>
+        </div>
+        <div class = "gm" style="display: none;">
+            <a href="/grooms-party/">Groom's Party Information</a>
+        </div>
+    </div>
+    <!-- add js scripts -->
+    <!-- <script src="../js/passcodeCheck.js"></script> -->
+    <script src="../js/loadLogin.js"></script>
+    <style src="../stylesheets/home.css"></style>
+</header>
+
+<body>
+    <div class = "valid">
+        <p>Welcome! In this website, you will find all relevant information for your role in the wedding of Mary Moylan and Sam Spacey.</p>
+        <p class="guest">As a guest, ...</p>
+        <div class="special">
+            <p class="bm" style="display: none;">Additionally, as you are a bridesmaid, ...</p>
+            <p class="gm" style="display: none;">Additionally, as you are a groomsman, ...</p>
+        </div>
+    </div>
+
+    <p>If you are unsure how to access any of the information you feel you may need, please don't hesitate to contact the website administrator, via the 'Contact us' tab.</p>
+</body>
+
+<footer>
+    <p>For any technical issues, please contact the website administrator.</p>
+</footer>
+</html>

@@ -1,0 +1,4 @@
+/* hide div class special, gm, and bm by default */
+.special, .gm, .bm {
+  display: none;
+}
