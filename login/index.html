@@ -87,13 +87,13 @@
             if (userInput === passcodes.guest) {
                 setCookie('userType', 'guest', 7);
                 // Delay redirect to ensure cookie is set
-                setTimeout(() => { window.location.href = '/home'; }, 100);
+                setTimeout(() => { window.location.href = '/'; }, 100);
             } else if (userInput === passcodes.groomsman) {
                 setCookie('userType', 'groomsman', 7);
-                setTimeout(() => { window.location.href = '/home'; }, 100);
+                setTimeout(() => { window.location.href = '/'; }, 100);
             } else if (userInput === passcodes.bridesmaid) {
                 setCookie('userType', 'bridesmaid', 7);
-                setTimeout(() => { window.location.href = '/home'; }, 100);
+                setTimeout(() => { window.location.href = '/'; }, 100);
             } else {
                 // Show error message if the passcode is invalid
                 errorMessage.style.display = 'block';
