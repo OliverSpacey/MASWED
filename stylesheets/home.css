@@ -1,23 +1,107 @@
 /* hide div class special, gm, and bm by default */
-.special, .gm, .bm {
+/* .special, .gm, .bm {
   display: none;
+} */
+
+/* dekstop rules */
+@media (min-width: 768px) {
+  .special, .gm, .bm {
+    display: block;
+  }
+
+  .contact {
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  header h1 {
+    border: #A8D5BA;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+  }
+
+  /* change the link colours to be clearer and add boxes of equal size to them */
+  a {
+    color: #fff0f0;
+    text-decoration: none;
+    padding: 0.5rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin: 0.5rem;
+  }
+
+
+
+  body {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    height: 100vh;
+    /* background-color: black;
+    */
+    background-image: linear-gradient(rgb(87, 233, 255), #A8D5BA);
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+
+  .para {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.138);
+    padding: 1rem;
+  }
 }
 
-.contact {
-  background-color: white;
-  padding: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
-}
+/* hide the  */
+@media (max-width: 768px) {
+  .special, .gm, .bm {
+    display: block;
+  }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
+  .contact {
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  header h1 {
+    border: #A8D5BA;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+  }
+
+  /* change the link colours to be clearer and add boxes of equal size to them */
+  a {
+    color: #fff0f0;
+    text-decoration: none;
+    padding: 0.5rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin: 0.5rem;
+  }
+  
 }
