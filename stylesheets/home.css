@@ -5,12 +5,13 @@
 
 /* dekstop rules */
 @media (min-width: 768px) {
-  .special, .gm, .bm {
+  /* .special, .gm, .bm {
     display: block;
-  }
+  } */
 
-  .contact {
+  .contactEmail {
     background-color: white;
+    color: black;
     padding: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -19,8 +20,15 @@
     max-width: 400px;
   }
 
+  .contact {
+    /* display: block; */
+    justify-content: center;
+    align-items: center;
+  }
+
   header h1 {
-    border: #A8D5BA;
+    background-color: #0000005d;
+    padding: 1rem;
   }
 
   header {
@@ -32,14 +40,14 @@
     color: white;
   }
 
-  /* change the link colours to be clearer and add boxes of equal size to them */
+  /* make boxes equal size */
   a {
-    color: #fff0f0;
+    color: #003612;
     text-decoration: none;
-    padding: 0.5rem;
-    border: 1px solid #333;
+    padding: 1%;
+    /* background-color: aliceblue; */
     border-radius: 8px;
-    margin: 0.5rem;
+    margin: 1rem;
   }
 
 
@@ -67,9 +75,9 @@
 
 /* hide the  */
 @media (max-width: 768px) {
-  .special, .gm, .bm {
+  /* .special, .gm, .bm {
     display: block;
-  }
+  } */
 
   .contact {
     background-color: white;
@@ -99,9 +107,157 @@
     color: #fff0f0;
     text-decoration: none;
     padding: 0.5rem;
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
     border-radius: 8px;
     margin: 0.5rem;
   }
   
+}
+
+/* styles.css */
+
+/* Basic Navigation Bar Styling */
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  background-color: #f7cac9; /* Blush pink background */
+  padding: 10px;
+  margin: 0;
+}
+
+.nav-item {
+  position: relative;
+  margin: 0 15px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 18px;
+  color: #6B8E62; /* Soft green text */
+}
+
+/* Growing Plant Effect */
+.nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(50%) scaleY(0);
+  transform-origin: bottom;
+  width: 2px; /* Width of the "plant stem" */
+  height: 20px; /* Height it grows to */
+  background-color: #0e7700; /* Soft green */
+  transition: transform 0.3s ease-in-out;
+  transition-delay: 0.2s;
+}
+
+/* Trigger Animation on Hover */
+.nav-item:hover::after,
+.nav-item.selected::after {
+  transform: translateX(-50%) scaleY(1); /* "Grow" to full height */
+  transition-delay: 0s; /* No delay on hover */
+}
+
+/* Optional: Add a leaf or bud effect */
+.nav-item::before {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) scale(0) translateY(-100%);
+  width: 8px;
+  height: 8px;
+  background-color: rgb(180, 165, 0); /* Yellow "leaf/bud" */
+  border-radius: 50%; /* Make it circular */
+  transition: transform 0.3s ease-in-out 0.2s; /* Delay to follow the stem */
+  /* place infront of the ::after, so the line of the stem does not appear visible where it intersects with the bud */
+  z-index: 1;
+}
+
+.nav-item:hover::before,
+.nav-item.selected::before {
+  transform: translateX(-50%) scale(2) translateY(-100%); /* "Grow" to full size */
+  transition-delay: 0.2s; /* Delay the appearance of the leaf/bud */
+}
+
+.nav-item::before {
+  transition-delay: 0s; /* Default delay for the leaf/bud */
+}
+
+/* /*  
+.leaf {
+  position: absolute;
+  bottom: 0%; /* Halfway up the stem 
+  left: 50%;
+  transform-origin: bottom-left;
+  transform: translateX(-10%) scale(0) translateY(-50%) rotate(-135deg);
+  width: 8px;
+  height: 16px;
+  background-color: #0e7700; /* Yellow "middle leaf" 
+  border-radius: 50% 0 50% 50%; /* Make it circular 
+  transition: transform 0.3s ease-in-out;
+  transition-delay: 0.15s; /* Delay to sync with the other elements 
+  z-index: 1;
+} */
+
+.nav-item:hover .leaf,
+.nav-item.selected .leaf {
+    transform: translateX(30%) scale(0.7) translateY(-40%) rotate(-135deg); /* "Grow" to full size */
+    transition-delay: 0.07s; /* Delay the appearance of the middle leaf */
+}
+
+
+/* Plant Element - Initial State */
+.plant::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(50%) scaleY(0); /* Start with stem hidden */
+  transform-origin: bottom;
+  width: 2px;
+  height: 20px;
+  background-color: #0e7700; /* Soft green for the stem */
+  transition: transform 1s ease-in-out; /* Slower animation */
+  transition-delay: 0.2s;
+}
+
+.plant::before {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) scale(0) translateY(-100%); /* Start with leaf hidden */
+  width: 8px;
+  height: 8px;
+  background-color: rgb(180, 165, 0); /* Yellow "leaf/bud" */
+  border-radius: 50%; /* Circular */
+  transition: transform 1s ease-in-out 0.5s; /* Delayed and slower animation */
+  z-index: 1;
+}
+
+.leaf {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform-origin: bottom-left;
+  transform: translateX(-20%) scale(0) translateY(-50%); /* Start hidden */
+  width: 8px;
+  height: 16px;
+  background-color: #0e7700; /* Middle leaf */
+  border-radius: 50% 0 50% 50%; /* Leaf-like shape */
+  transition: transform 1s ease-in-out 0.3s; /* Slower animation */
+  z-index: 1;
+}
+
+/* Active state that triggers the animation on page load */
+.plant.grow::after {
+  transform: translateX(50%) scaleY(1); /* Full height stem */
+}
+
+.plant.grow::before {
+  transform: translateX(-50%) scale(2) translateY(-100%); /* Full size bottom leaf/bud */
+}
+
+.plant.grow .leaf {
+  transform: translateX(50%) scale(0.7) translateY(-40%) rotate(-135deg); /* Full size middle leaf */
 }
