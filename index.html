@@ -26,31 +26,15 @@
 </head>
 
 <header>
-    <h1>Mary and Sam's Wedding</h1>
-    <!-- Generic Links for all guests -->
-    <div class = "nav-bar">
-        <a class = "nav-item" href="/">Home<span class="leaf"></span></a>
-        <a class = "nav-item" href="/guest-information/">Guest Information<span class = "leaf"></span></a>
-        <a class = "nav-item" href="/venue-information/">Venue Information<span class = "leaf"></span></a>
-        <a class = "nav-item" href="/gifts/">Gifts<span class = "leaf"></span></a>
-        <a class = "nav-item" href="/RSVP-form/">RSVP Form<span class = "leaf"></span></a>
-        <a class = "nav-item" href="/contact/">Contact Us<span class = "leaf"></span></a>
-
-
-        <!-- Links for groomsmen, bridesmaids -->
-        <div class = "special" style="display: none;">
-            <div class = "bm" style="display: none;">
-                <a href="/bridal-party/">Bridal Party Information</a>
-            </div>
-            <div class = "gm" style="display: none;">
-                <a href="/grooms-party/">Groom's Party Information</a>
-            </div>
-        </div>
-    </div>
+    <div class="flourish">Our Wedding</div>
 
     <div class = "plant">
         <!-- grow plants here -->
         <span class = "leaf"></span>
+        <div class="petal petal-1"></div>
+        <div class="petal petal-2"></div>
+        <div class="petal petal-3"></div>
+        <div class="petal petal-4"></div>
     </div>
 
     <!-- add js scripts -->
@@ -66,11 +50,41 @@
       
     <style src="../stylesheets/home.css"></style>
     <link rel="stylesheet" href="/stylesheets/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 </header>
 
+
+<div class = "nav-bar">
+<!-- Generic Links for all guests -->
+    <a class = "nav-item" href="/">Home</a>
+    <a class = "nav-item" href="/guest-information/">Guest Information</a>
+    <a class = "nav-item" href="/venue-information/">Venue Information</a>
+    <a class = "nav-item" href="/gifts/">Gifts</a>
+    <a class = "nav-item" href="/RSVP-form/">RSVP Form</a>
+    <a class = "nav-item" href="/contact/">Contact Us</a>
+
+
+    <!-- Links for groomsmen, bridesmaids -->
+    <div class = "special" style="display: none;">
+        <div class = "bm" style="display: none;">
+            <a href="/bridal-party/">Bridal Party Information</a>
+        </div>
+        <div class = "gm" style="display: none;">
+            <a href="/grooms-party/">Groom's Party Information</a>
+        </div>
+    </div>
+</div>
+
 <body>
-    <div class = "para">
-        <p>Welcome! In this website, you will find all relevant information for your role in the wedding of Mary Moylan and Sam Spacey.</p>
+    <div id = "para">
+        <p>Welcome! This is the wedding information page for:</p>
+    </div>
+
+    <div id = "para">
+        <h1>MARY MOYALAN & SAMUEL SPACEY</h1>
+    </div>
+
+    <div id = "para">
         <p class="guest">As a guest, ...</p>
         <div class="special">
             <p class="bm" style="display: none;">Additionally, as you are a bridesmaid, ...</p>

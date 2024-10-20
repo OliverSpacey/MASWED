@@ -49,11 +49,29 @@
             color: red;
             margin-top: 10px;
         }
+
     </style>
+    <script>
+        window.addEventListener('load', function() {
+          // Find the .plant element and add the 'grow' class to trigger the animation
+          const plant = document.querySelector('.plant');
+          plant.classList.add('grow');
+        });
+      </script>
+
+    <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 <body>
 
     <div class="login-container">
+        <div class = "plant">
+            <!-- grow plants here -->
+            <span class = "leaf"></span>
+            <div class="petal petal-1"></div>
+            <div class="petal petal-2"></div>
+            <div class="petal petal-3"></div>
+            <div class="petal petal-4"></div>
+        </div>
         <h2>Enter Passcode</h2>
         <input type="password" id="passcode-input" placeholder="Enter your passcode">
         <button onclick="checkPasscode()">Submit</button>
