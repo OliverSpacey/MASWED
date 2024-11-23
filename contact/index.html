@@ -7,14 +7,42 @@
 </head>
 
 <header>
-    <h1>Mary and Sam's Wedding</h1>
+    <div class="flourish"><a href="/">Our Wedding</a></div>
+
+    <div class = "plant">
+        <!-- grow plants here -->
+        <span class = "leaf"></span>
+        <div class="petal petal-1"></div>
+        <div class="petal petal-2"></div>
+        <div class="petal petal-3"></div>
+        <div class="petal petal-4"></div>
+    </div>
+
+    <!-- add js scripts -->
+    <!-- <script src="../js/passcodeCheck.js"></script> -->
+    <script src="../js/loadLogin.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+          // Find the .plant element and add the 'grow' class to trigger the animation
+          const plant = document.querySelector('.plant');
+          plant.classList.add('grow');
+        });
+      </script>
+      
+    <style src="../stylesheets/home.css"></style>
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+</header>
+
+<div class = "nav-bar">
     <!-- Generic Links for all guests -->
-    <a href="/">Home</a>
-    <a href="/guest-information/">Guest Information</a>
-    <a href="/venue-information/">Venue Information</a>
-    <a href="/gifts/"">Gifts</a>
-    <a href="/RSVP-form/">RSVP Form</a>
-    <a href="/contact/">Contact us</a>
+    <a class = "nav-item" href="/">Home</a>
+    <a class = "nav-item" href="/guest-information/">Guest Information</a>
+    <a class = "nav-item" href="/venue-information/">Venue Information</a>
+    <a class = "nav-item" href="/gifts/">Gifts</a>
+    <a class = "nav-item" href="/RSVP-form/">RSVP Form</a>
+    <a class = "nav-item" href="/contact/">Contact Us</a>
+
 
     <!-- Links for groomsmen, bridesmaids -->
     <div class = "special" style="display: none;">
@@ -25,12 +53,7 @@
             <a href="/grooms-party/">Groom's Party Information</a>
         </div>
     </div>
-    <!-- add js scripts -->
-    <!-- <script src="../js/passcodeCheck.js"></script> -->
-    <script src="../js/loadLogin.js"></script>
-    <style src="../stylesheets/home.css"></style>
-    <link rel="stylesheet" href="../stylesheets/home.css">
-</header>
+</div>
 
 <body class="contact">
     <p>For any technical or user-error queries, please email the contact below, using the indicated subject title.</p>
