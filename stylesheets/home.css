@@ -39,11 +39,12 @@
     background-color: #faf3dd;
     color: black;
     font-family: 'Cormorant Garamond', serif;
+    /* background-color: #a1a1a1; */
   }
 
   .flourish {
     font-family: 'Great Vibes', cursive;
-    font-size: 2rem;
+    font-size: 305pt;
     /* middle-aligned */
     display: flex;
     justify-content: center;
@@ -53,7 +54,7 @@
   }
   .flourish a {
     font-family: 'Great Vibes', cursive;
-    font-size: 2rem;
+    font-size: 35pt;
     /* middle-aligned */
     display: flex;
     justify-content: center;
@@ -78,6 +79,12 @@
     /* border-radius: 8px; */
     font-family: 'Dancing Script', cursive;
     /* margin: 1rem; */
+  }
+
+  .test{
+    display: flex;
+    justify-items: center;
+    padding-left: 5%;
   }
 
   .formTitle{
@@ -189,6 +196,7 @@
     padding: 1rem;
     background-color: #faf3dd;
     color: white;
+    background-color: #ff0000;
   }
 
   /* change the link colours to be clearer and add boxes of equal size to them */
@@ -199,6 +207,11 @@
     /* border: 1px solid #333; */
     border-radius: 8px;
     margin: 0.5rem;
+    background-color: #bc4749;
+  }
+
+  #para{
+    font-size: 35pt;
   }
   
 }
@@ -206,21 +219,44 @@
 /* styles.css */
 
 /* Basic Navigation Bar Styling */
-.nav-bar {
+nav {
   display: flex;
   justify-content: center;
   list-style: none;
   background-color: #faf3dd; /* Blush pink background */
-  padding: 10px;
+  padding: 4%;
   margin: 0;
+  /* background-color: #a1a1a1; */
 }
 
-.nav-item {
+nav a {
   position: relative;
   margin: 0 15px;
   padding: 10px 0;
-  cursor: pointer;
+  /* cursor: pointer; */
   font-size: 18px;
   color: black; /* Soft green text */
+  font-family:'Times New Roman', Times, serif;
 }
 
+nav a:hover{
+  color: rgb(90, 93, 27);
+}
+
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #6a994e;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+  left: 0;
+}

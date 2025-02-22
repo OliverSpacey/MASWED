@@ -25,11 +25,11 @@
     </script>
 </head>
 
+<div class="test">
 <header>
-    
     <div class="flourish">
         
-        <a href="/">Our Wedding</a>
+        <a href="/">Mary & Sam</a>
     
         <svg class="swirl" width="100" height="100" viewBox="0 0 325 350">
             <path d="M41.106,158.732c5.358-2.643,10.047-4.585,14.236-4.037c-1.915,1.071-3.242,2.966-3.659,5.675
@@ -127,15 +127,8 @@
         </svg>
 
     </div>
-    
 
-    <!-- <div class = "plant">
-        <span class = "leaf"></span>
-        <div class="petal petal-1"></div>
-        <div class="petal petal-2"></div>
-        <div class="petal petal-3"></div>
-        <div class="petal petal-4"></div>
-    </div> -->
+
     
 
     <!-- add js scripts -->
@@ -162,12 +155,12 @@
           }); 
 
         // Add the grow animation to each swirl
-        document.querySelectorAll('.swirl').forEach(function(swarm) {
-            console.log('adsasdadsasdasdasdsdasdsadasddsaads');
-            setTimeout(function() {
-                swarm.classList.add('swirl-grow');
-            }, 50000); // Delay to make sure all swirls start growing together
-        });
+        //document.querySelectorAll('.swirl').forEach(function(swarm) {
+        //    console.log('adsasdadsasdasdasdsdasdsadasddsaads');
+        //    setTimeout(function() {
+        //        swarm.classList.add('swirl-grow');
+        //    }, 50000); // Delay to make sure all swirls start growing together
+        //});
           
         });
       </script>
@@ -178,28 +171,30 @@
 </header>
 
 
-<div class = "nav-bar">
+
+
+<nav>
     
-<!-- Generic Links for all guests -->
-    <a class = "nav-item" href="/">Home</a>
-    <a class = "nav-item" href="/guest-information/">Guest Information</a>
-    <a class = "nav-item" href="/venue-information/">Venue Information</a>
-    <a class = "nav-item" href="/gifts/">Gifts</a>
-    <a class = "nav-item" href="/RSVP-form/">RSVP Form</a>
-    <a class = "nav-item" href="/contact/">Contact Us</a>
-
-
-    <!-- Links for groomsmen, bridesmaids -->
-    <div class = "special" style="display: none;">
-        <div class = "bm" style="display: none;">
-            <a href="/bridal-party/">Bridal Party Information</a>
+    <!-- Generic Links for all guests -->
+        <a href="/">Home</a>
+        <a href="/guest-information/">Guest Information</a>
+        <a href="/venue-information/">Venue Information</a>
+        <a href="/gifts/">Gifts</a>
+        <a href="/RSVP-form/" class="active">RSVP Form</a>
+        <a href="/contact/">Contact Us</a>
+    
+    
+        <!-- Links for groomsmen, bridesmaids -->
+        <div class = "special" style="display: none;">
+            <div class = "bm" style="display: none;">
+                <a href="/bridal-party/">Bridal Party Information</a>
+            </div>
+            <div class = "gm" style="display: none;">
+                <a href="/grooms-party/">Groom's Party Information</a>
+            </div>
         </div>
-        <div class = "gm" style="display: none;">
-            <a href="/grooms-party/">Groom's Party Information</a>
-        </div>
-    </div>
+</nav>
 </div>
-
 
 
 <body>
