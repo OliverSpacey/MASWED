@@ -171,24 +171,24 @@
 
 
 <nav>
-    
-    <!-- Generic Links for all guests -->
-        <a href="/">Home</a>
-        <a href="/guest-information/">Guest Information</a>
-        <a href="/venue-information/">Venue Information</a>
-        <a href="/gifts/">Gifts</a>
-        <a href="/RSVP-form/">RSVP Form</a>
-        <a href="/contact/">Contact Us</a>
-    
-    
-        <!-- Links for groomsmen, bridesmaids -->
-        <div class = "special" style="display: none;">
-            <div class = "bm" style="display: none;">
-                <a href="/bridal-party/">Bridal Party Information</a>
-            </div>
-            <div class = "gm" style="display: none;">
-                <a href="/grooms-party/" class="active">Groom's Party Information</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Desktop Navigation -->
+    <ul>
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/guest-information/">Guest Information</a></li>
+      <li><a href="/venue-information/">Venue Information</a></li>
+      <li><a href="/gifts/">Gifts</a></li>
+      <li><a href="/RSVP-form/">RSVP Form</a></li>
+      <li><a href="/Contact/">Contact Us</a></li>
+    </ul>
+  
+    <!-- Mobile Navigation Dropdown -->
+    <div class="mobile-nav">
+      <select id="mobileMenu">
+        <option value="">Menu</option>
+        <option value="index.html">Home</option>
+        <option value="about.html">About</option>
+        <option value="contact.html">Contact</option>
+      </select>
+    </div>
+  </nav>
 </div>

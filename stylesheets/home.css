@@ -1,13 +1,63 @@
-/* hide div class special, gm, and bm by default */
-/* .special, .gm, .bm {
-  display: none;
-} */
-
 /* desktop rules */
+  /* Basic Navigation Bar Styling */
+  nav {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    background-color: #faf3dd; /* Blush pink background */
+    padding: 5%;
+    margin: 0;
+  }
+
+/* Desktop Navigation */
 @media (min-width: 768px) {
-  /* .special, .gm, .bm {
-    display: block;
-  } */
+  nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav ul li {
+    margin: 0 15px;
+  }
+
+  nav ul li a {
+    position: relative;
+    font-size: 18px;
+    padding-bottom: 5px;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+  }
+
+  /* Hover Effect */
+  nav ul li a:hover {
+    color: rgb(90, 93, 27);
+  }
+
+  /* Green Underline */
+  nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #6a994e;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+
+  nav ul li a:hover::after,
+  nav ul li a.active::after {
+    width: 100%;
+    left: 0;
+  }
+
+  /* Hide the mobile dropdown */
+  .mobile-nav {
+    display: none;
+  }
 
   .contactEmail {
     background-color: white;
@@ -169,94 +219,161 @@
   }
 }
 
-/* phone rules */
-@media (max-width: 768px) {
-  /* .special, .gm, .bm {
-    display: block;
-  } */
-
-  .contact {
-    background-color: white;
-    padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
+/* Mobile Styling */
+@media (max-width: 767px) {
+  nav {
+    justify-content: center;
+    align-items: center;
   }
 
+  /* Hide the desktop menu */
+  nav ul {
+    display: none;
+  }
+
+  /* Style the mobile dropdown */
+  .mobile-nav {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 20px auto;
+    background-color: #faf3dd; /* Soft blush background */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 1rem;
+    position: relative;
+  }
+
+  .mobile-nav.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.mobile-nav.dropbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+  }
+
+  .mobile-nav.dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+  }
+
+  .mobile-nav.dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
+
+  .mobile-nav.dropdown-content a:hover {background-color: #f1f1f1}
+
+  .mobile-nav.dropdown:hover .dropdown-content {
+      display: block;
+  }
+
+  .mobile-nav.dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+  }
+
+  /* Copy Desktop Styles to Mobile */
   header h1 {
-    border: #A8D5BA;
+    background-color: #faf3dd;
+    padding: 1rem;
   }
 
   header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 1rem;
     background-color: #faf3dd;
-    color: white;
-    background-color: #ff0000;
+    color: black;
+    font-family: 'Cormorant Garamond', serif;
   }
 
-  /* change the link colours to be clearer and add boxes of equal size to them */
-  a {
-    color: #fff0f0;
-    text-decoration: none;
-    padding: 0.5rem;
-    /* border: 1px solid #333; */
-    border-radius: 8px;
-    margin: 0.5rem;
-    background-color: #bc4749;
+  .flourish {
+    font-family: 'Great Vibes', cursive;
+    font-size: 305pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b38600; /* Goldish color for flourish elements */
   }
-
-  #para{
+  .flourish a {
+    font-family: 'Great Vibes', cursive;
     font-size: 35pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b38600; /* Goldish color for flourish elements */
   }
-  
-}
 
-/* styles.css */
+  a {
+    color: black;
+    text-decoration: none;
+    /* padding: 1%; */
+    /* background-color: aliceblue; */
+    /* border-radius: 8px; */
+    font-family: 'Dancing Script', cursive;
+    /* margin: 1rem; */
+  }
 
-/* Basic Navigation Bar Styling */
-nav {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  background-color: #faf3dd; /* Blush pink background */
-  padding: 4%;
-  margin: 0;
-  /* background-color: #a1a1a1; */
-}
+  .flourish .swirl {
+    display: flex;
+    justify-self: right;
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
 
-nav a {
-  position: relative;
-  margin: 0 15px;
-  padding: 10px 0;
-  /* cursor: pointer; */
-  font-size: 18px;
-  color: black; /* Soft green text */
-  font-family:'Times New Roman', Times, serif;
-}
+  .test{
+    display: flex;
+    justify-items: center;
+    padding-left: 5%;
+  }
 
-nav a:hover{
-  color: rgb(90, 93, 27);
-}
+  .formTitle {
+    display: flex;
+    justify-content: center;
+  }
 
+  .formContent {
+    display: flex;
+    justify-content: center;
+  }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background-color: #6a994e;
-  transition: width 0.3s ease, left 0.3s ease;
-}
+  .formBackground {
+    padding: 5%;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-family: 'Parisienne', cursive;
+    font-size: 20pt;
+  }
 
-nav a:hover::after,
-nav a.active::after {
-  width: 100%;
-  left: 0;
+  input {
+    border: 2px solid #6a994e;
+    border-radius: 12px;
+    padding: 12px;
+    background: #f7f3e9; /* Light beige */
+    color: #3a3a3a;
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  input:focus {
+    border-color: #bc4749; /* Soft red for focus */
+    box-shadow: 0 0 8px rgba(188, 71, 73, 0.3);
+  }
+
+  body {
+    background-color: #faf3dd;
+    font-family: 'Dancing Script', cursive;
+    color: black;
+  }
 }
