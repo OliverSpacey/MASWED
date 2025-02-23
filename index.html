@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Mary and Sam's Wedding information</title>
     <script>
         // Function to read cookies
@@ -129,15 +129,10 @@
     </div>
     
 
-    <!-- add js scripts -->
-    <!-- <script src="../js/passcodeCheck.js"></script> -->
     <script src="../js/loadLogin.js"></script>
-    <!-- <script src="../js/animations.js"></script> -->
+    <script src="../js/dropdown.js"></script>
     <script>
         window.addEventListener('load', function() {
-          // Find the .plant element and add the 'grow' class to trigger the animation
-          //const plant = document.querySelector('.plant');
-          //plant.classList.add('grow');
 
           let path = document.querySelector(".swirl path");
           let length = path.getTotalLength(); // Get actual length of the path
@@ -151,14 +146,6 @@
             path.style.transition = "stroke-dashoffset 7s ease-in-out";
             path.style.strokeDashoffset = "0";
           }); 
-
-        // Add the grow animation to each swirl
-        //document.querySelectorAll('.swirl').forEach(function(swarm) {
-        //    console.log('adsasdadsasdasdasdsdasdsadasddsaads');
-        //    setTimeout(function() {
-        //        swarm.classList.add('swirl-grow');
-        //    }, 50000); // Delay to make sure all swirls start growing together
-        //});
           
         });
       </script>
@@ -202,14 +189,18 @@
     <!-- Mobile Navigation Dropdown -->
     <div class="mobile-nav">
         <div class="dropdown">
-            <button class="dropbtn">Left</button>
-            <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
+            <button class="dropbtn" id="menuButton">Menu</button>
+            <div class="dropdown-content" id="menuDropdown">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/guest-information/">Guest Information</a></li>
+                <li><a href="/venue-information/">Venue Information</a></li>
+                <li><a href="/gifts/">Gifts</a></li>
+                <li><a href="/RSVP-form/">RSVP Form</a></li>
+                <li><a href="/Contact/">Contact Us</a></li>
             </div>
-          </div>
+        </div>
     </div>
+
   </nav>
 
 </div>
