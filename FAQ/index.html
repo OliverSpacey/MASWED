@@ -132,6 +132,7 @@
     <!-- add js scripts -->
     <script src="../js/loadLogin.js"></script>
     <script src="../js/dropdown.js"></script>
+    <script src="../js/tsvReader.js"></script>
     <script>
         window.addEventListener('load', function() {
           // Find the .plant element and add the 'grow' class to trigger the animation
@@ -177,8 +178,8 @@
       <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
       <li><a href="/gifts/">Gifts</a></li>
       <li><a href="/RSVP-form/">RSVP Form</a></li>
-      <li><a href="/FAQ/">FAQ</a></li>
-      <li><a href="/Contact/" class="active">Contact Us</a></li>
+      <li><a href="/FAQ/" class="active">FAQ</a></li>
+      <li><a href="/Contact/">Contact Us</a></li>
     </ul>
   
     <!-- Mobile Navigation Dropdown -->
@@ -191,30 +192,30 @@
                 <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
                 <li><a href="/gifts/">Gifts</a></li>
                 <li><a href="/RSVP-form/">RSVP Form</a></li>
-                <li><a href="/FAQ/">FAQ</a></li>
-                <li><a href="/Contact/" class="active">Contact Us</a></li>
+                <li><a href="/FAQ/" class="active">FAQ</a></li>
+                <li><a href="/Contact/">Contact Us</a></li>
           </div>
       </div>
   </div>
 </nav>
 </div>
 
-<body class="contact">
-    <h1>MAKE THIS SAME AS RSVP BUT LINK TO DIFFERENT EMAIL</h1>
-    <p>TESTING - appearing?</p>
-    <p>For any technical or user-error queries, please email the contact below, using the indicated subject title.</p>
-    <div class="contactEmail">
-        <p>Website administrator:</p>
-        <p>maswed.error@gmail.com</p>
+<body>
+    <!-- Category Buttons -->
+    <div id="category-buttons">
+        <button data-category="RSVP and Attendance">RSVP and Attendance</button>
+        <button data-category="Venue and Logistics">Venue and Logistics</button>
+        <button data-category="Dress Code and Attire">Dress Code and Attire</button>
+        <button data-category="Food and Drink">Food and Drink</button>
+        <button data-category="Schedule and Activities">Schedule and Activities</button>
+        <button data-category="Travel and Accommodation">Travel and Accommodation</button>
+        <button data-category="Gifts">Gifts</button>
+        <button data-category="Children and Plus-Ones">Children and Plus-Ones</button>
+        <button data-category="Miscellaneous">Miscellaneous</button>
     </div>
-    <p>In your email, please use one of the following subjects:</p>
-    <!-- list -->
-    <ul>
-        <li>WEBSITE ERROR - for if there is a technical error in the website, preventing or hindering your use of it.</li>
-        <li>USER ERROR - for if you make a mistake and need to rectify it (e.g. in filling out the RSVP form).</li>
-    </ul>
+  <div id="output">
+  </div>
 </body>
 
-<footer>
-    <p>For any technical issues, please contact the website administrator.</p>
-</footer>
+
+</html>
