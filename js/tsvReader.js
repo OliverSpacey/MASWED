@@ -19,6 +19,7 @@ async function displayData() {
     console.log("Parsed Data:", data); // Debugging step to see the structure of data
 
     const container = document.getElementById("output");
+    const title = document.getElementById("category-title");
     const buttons = document.getElementById("category-buttons").getElementsByTagName("button");
 
     if (!container) {
@@ -44,7 +45,7 @@ async function displayData() {
         const categoryData = categorizedData[categoryId];
         categoryData.forEach(item => {
             const div = document.createElement("div");
-            div.innerHTML = `<p><strong>${item.Question}:</strong> ${item["Answer"]}</p>`;
+            div.innerHTML = `<p><strong>${item.Question}</strong><br>${item["Answer"]}</p><br>`;
             categoryDiv.appendChild(div);
         });
 
@@ -56,6 +57,8 @@ async function displayData() {
         button.addEventListener("click", () => {
             const categoryId = button.getAttribute("data-category");
             console.log(categoryId);
+            title.innerText = categoryId;
+
 
             // Toggle visibility for the selected category
             Object.keys(categorizedData).forEach(catId => {
