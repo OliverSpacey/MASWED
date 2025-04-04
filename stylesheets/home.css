@@ -590,6 +590,7 @@
   /* Hide the desktop menu */
   nav ul {
     display: none;
+    text-align: center;
   }
   
   /* Carousel container */
