@@ -17,10 +17,6 @@
 
 /* Desktop Navigation */
 @media (min-width: 768px) {
-  .scroll-info {
-    display: none;
-  }
-
   nav ul {
     display: flex;
     list-style: none;
@@ -667,10 +663,5 @@
     font-size: 16px;
     font-family: 'Times New Roman', Times, serif;
     color: black;
-  }
-  
-  .scroll-info {
-    display: block;
-    text-align: center;
   }
 }
