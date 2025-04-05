@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Mary and Sam's Wedding information</title>
     <script>
         // Function to read cookies
@@ -129,10 +129,14 @@
     </div>
     
 
-    <script src="../js/loadLogin.js"></script>
+    <!-- add js scripts -->
     <script src="../js/dropdown.js"></script>
+    <script src="../js/loadLogin.js"></script>
     <script>
         window.addEventListener('load', function() {
+          // Find the .plant element and add the 'grow' class to trigger the animation
+          //const plant = document.querySelector('.plant');
+          //plant.classList.add('grow');
 
           let path = document.querySelector(".swirl path");
           let length = path.getTotalLength(); // Get actual length of the path
@@ -146,6 +150,14 @@
             path.style.transition = "stroke-dashoffset 7s ease-in-out";
             path.style.strokeDashoffset = "0";
           }); 
+
+        // Add the grow animation to each swirl
+        //document.querySelectorAll('.swirl').forEach(function(swarm) {
+        //    console.log('adsasdadsasdasdasdsdasdsadasddsaads');
+        //    setTimeout(function() {
+        //        swarm.classList.add('swirl-grow');
+        //    }, 50000); // Delay to make sure all swirls start growing together
+        //});
           
         });
       </script>
@@ -156,74 +168,35 @@
 </header>
 
 
-<!-- <nav>
-    <a href="/" class="active">Home</a>
-    <a href="/guest-information/">Guest Information</a>
-    <a href="/venue-information/">Venue Information</a>
-    <a href="/gifts/">Gifts</a>
-    <a href="/RSVP-form/">RSVP Form</a>
-    <a href="/contact/">Contact Us</a>
-
-
-    <div class = "special" style="display: none;">
-        <div class = "bm" style="display: none;">
-            <a href="/bridal-party/">Bridal Party Information</a>
-        </div>
-        <div class = "gm" style="display: none;">
-            <a href="/grooms-party/">Groom's Party Information</a>
-        </div>
-    </div>
-</nav> -->
 <nav>
-    <!-- Desktop Navigation -->
-    <ul>
-      <li><a href="/" class="active">Home</a></li>
-      <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
-      <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
-      <li><a href="/gifts/">Gifts</a></li>
-      <li><a href="/RSVP-form/">RSVP Form</a></li>
-      <li><a href="/itinerary/">Itinerary</a></li>
-      <li><a href="/FAQ/">FAQ</a></li>
-      <li><a href="/contact/">Contact Us</a></li>
-  
-    </ul>
-  
-    <!-- Mobile Navigation Dropdown -->
-    <div class="mobile-nav">
-      <div class="dropdown">
-          <button class="dropbtn" id="menuButton">Menu</button>
-          <div class="dropdown-content" id="menuDropdown">
-                <li><a href="/" class="active">Home</a></li>
-                <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
-                <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
-                <li><a href="/gifts/">Gifts</a></li>
-                <li><a href="/RSVP-form/">RSVP Form</a></li>
-                <li><a href="/itinerary/">Itinerary</a></li>
-                <li><a href="/FAQ/">FAQ</a></li>
-                <li><a href="/contact/">Contact Us</a></li>
-          </div>
-      </div>
-  </div>
-  </nav>
-  </div>
+  <!-- Desktop Navigation -->
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
+    <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
+    <li><a href="/gifts/">Gifts</a></li>
+    <li><a href="/RSVP-form/">RSVP Form</a></li>
+    <li><a href="/itinerary/" class="active">Itinerary</a></li>
+    <li><a href="/FAQ/">FAQ</a></li>
+    <li><a href="/contact/">Contact Us</a></li>
 
-<body>
+  </ul>
 
-    <h1 id="para">BIG PICTURE?</h1>
-
-    <div id = "para">
-        <p class="guest">As a guest, ...</p>
-        <div class="special">
-            <p class="bm" style="display: none;">Additionally, as you are a bridesmaid, ...</p>
-            <p class="gm" style="display: none;">Additionally, as you are a groomsman, ...</p>
+  <!-- Mobile Navigation Dropdown -->
+  <div class="mobile-nav">
+    <div class="dropdown">
+        <button class="dropbtn" id="menuButton">Menu</button>
+        <div class="dropdown-content" id="menuDropdown">
+              <li><a href="/">Home</a></li>
+              <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
+              <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
+              <li><a href="/gifts/">Gifts</a></li>
+              <li><a href="/RSVP-form/">RSVP Form</a></li>
+              <li><a href="/itinerary/" class="active">Itinerary</a></li>
+              <li><a href="/FAQ/">FAQ</a></li>
+              <li><a href="/contact/">Contact Us</a></li>
         </div>
     </div>
-
-    <p>If you are unsure how to access any of the information you feel you may need, please don't hesitate to contact the website administrator, via the 'Contact us' tab.</p>
-</body>
-
-<footer>
-    <p>For any technical issues, please contact the website administrator.</p>
-</footer>
-
-</html>
+</div>
+</nav>
+</div>

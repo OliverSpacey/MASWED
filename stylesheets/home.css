@@ -25,7 +25,7 @@
   }
 
   nav ul li {
-    margin: 0 15px;
+    margin: 0 35px;
   }
 
   nav ul li a {
@@ -130,7 +130,7 @@
   .test{
     display: flex;
     justify-items: center;
-    padding-left: 5%;
+    padding: 0 5% 0 5%;
   }
 
   .formTitle{
@@ -407,6 +407,14 @@
     border-radius: 8px;
   }
 
+  nav {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    background-color: #faf3dd; /* Blush pink background */
+    padding: 5%;
+    margin: 10% 0 0 0;
+  }
 
   nav li a {
     position: relative;
@@ -458,8 +466,9 @@
   .flourish .swirl {
     display: flex;
     justify-self: right;
-    padding-top: 1rem;
-    padding-left: 1rem;
+    padding-top: 30%;
+    width: 150px;
+    height: 150px;
   }
 
   .test{
