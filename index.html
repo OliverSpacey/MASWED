@@ -3,26 +3,8 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Mary and Sam's Wedding information</title>
-    <script>
-        // Function to read cookies
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            console.log(value);
-            const parts = value.split(`; ${name}=`);
-            console.log(parts);
-            if (parts.length > 0) return true;
-            return false;
-        }
-
-        // Redirect early based on logged-in status
-        (function() {
-            const loggedIn = getCookie('isLoggedIn');
-            console.log(loggedIn);
-            if (!loggedIn) {
-                window.location.href = '/login'; // Redirect to login if no valid login cookie
-            }
-        })();
-    </script>
+    <script src="../js/cookieRead.js"> </script>
+    <script src="../js/construction.js"></script>
 </head>
 
 <div class="test">
@@ -131,49 +113,13 @@
 
     <script src="../js/loadLogin.js"></script>
     <script src="../js/dropdown.js"></script>
-    <script>
-        window.addEventListener('load', function() {
-
-          let path = document.querySelector(".swirl path");
-          let length = path.getTotalLength(); // Get actual length of the path
-          console.log(length);
-        
-          path.style.strokeDasharray = length;
-          path.style.strokeDashoffset = length;
-        
-          
-          requestAnimationFrame(() => {
-            path.style.transition = "stroke-dashoffset 7s ease-in-out";
-            path.style.strokeDashoffset = "0";
-          }); 
-          
-        });
-      </script>
+    <script src="../js/swirl.js"></script>
       
     <style src="../stylesheets/home.css"></style>
     <link rel="stylesheet" href="/stylesheets/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 </header>
 
-
-<!-- <nav>
-    <a href="/" class="active">Home</a>
-    <a href="/guest-information/">Guest Information</a>
-    <a href="/venue-information/">Venue Information</a>
-    <a href="/gifts/">Gifts</a>
-    <a href="/RSVP-form/">RSVP Form</a>
-    <a href="/contact/">Contact Us</a>
-
-
-    <div class = "special" style="display: none;">
-        <div class = "bm" style="display: none;">
-            <a href="/bridal-party/">Bridal Party Information</a>
-        </div>
-        <div class = "gm" style="display: none;">
-            <a href="/grooms-party/">Groom's Party Information</a>
-        </div>
-    </div>
-</nav> -->
 <nav>
     <!-- Desktop Navigation -->
     <ul>

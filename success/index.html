@@ -3,26 +3,7 @@
 <head>
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Mary and Sam's Wedding information</title>
-    <script>
-        // Function to read cookies
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            console.log(value);
-            const parts = value.split(`; ${name}=`);
-            console.log(parts);
-            if (parts.length > 0) return true;
-            return false;
-        }
-
-        // Redirect early based on logged-in status
-        (function() {
-            const loggedIn = getCookie('isLoggedIn');
-            console.log(loggedIn);
-            if (!loggedIn) {
-                window.location.href = '/login'; // Redirect to login if no valid login cookie
-            }
-        })();
-    </script>
+    <script src="../js/cookieRead.js"> </script>
 </head>
 
 <div class="test">
@@ -132,35 +113,7 @@
     <!-- add js scripts -->
     <script src="../js/loadLogin.js"></script>
     <script src="../js/dropdown.js"></script>
-    <script>
-        window.addEventListener('load', function() {
-          // Find the .plant element and add the 'grow' class to trigger the animation
-          //const plant = document.querySelector('.plant');
-          //plant.classList.add('grow');
-
-          let path = document.querySelector(".swirl path");
-          let length = path.getTotalLength(); // Get actual length of the path
-          console.log(length);
-        
-          path.style.strokeDasharray = length;
-          path.style.strokeDashoffset = length;
-        
-          
-          requestAnimationFrame(() => {
-            path.style.transition = "stroke-dashoffset 7s ease-in-out";
-            path.style.strokeDashoffset = "0";
-          }); 
-
-        // Add the grow animation to each swirl
-        //document.querySelectorAll('.swirl').forEach(function(swarm) {
-        //    console.log('adsasdadsasdasdasdsdasdsadasddsaads');
-        //    setTimeout(function() {
-        //        swarm.classList.add('swirl-grow');
-        //    }, 50000); // Delay to make sure all swirls start growing together
-        //});
-          
-        });
-      </script>
+    <script src="../js/swirl.js"></script>
       
     <style src="../stylesheets/home.css"></style>
     <link rel="stylesheet" href="/stylesheets/home.css">
