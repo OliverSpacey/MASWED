@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     message.style.maxWidth = "600px";
 
     // Find the nav element
-    const nav = document.querySelector('.test');
+    const nav = document.querySelector('header');
     if (nav) {
       // Hide everything after the nav
       let next = nav.nextElementSibling;

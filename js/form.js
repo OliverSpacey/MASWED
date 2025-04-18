@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
       newRow.classList.add('fieldForms');
   
       newRow.innerHTML = `
-        <p>-------------------------------------------------------</p>
+        <hr>
         <label for="firstName">Forename:</label>
         <input type="text" id="firstName" name="first name" placeholder="Forename..." required>
         <p></p>
