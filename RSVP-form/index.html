@@ -6,7 +6,7 @@
     <script src="../js/cookieRead.js"> </script>
 </head>
 
-<div class="test">
+<!-- <div class="test"> -->
 <header>
     <div class="flourish">
         
@@ -113,47 +113,45 @@
     <script src="../js/dropdown.js"></script>
     <script src="../js/swirl.js"></script>
     <script src="../js/getCookieFamily.js"></script>
-      
+    <script src="../js/form.js"></script>
+
     <style src="../stylesheets/home.css"></style>
     <link rel="stylesheet" href="/stylesheets/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
-</header>
 
-
-
-
-<nav>
-  <!-- Desktop Navigation -->
-  <ul>
-    <li><a href="/">Home</a></li>
-    <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
-    <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
-    <li><a href="/gifts/">Gifts</a></li>
-    <li><a href="/RSVP-form/" class="active">RSVP Form</a></li>
-    <li><a href="/itinerary/">Itinerary</a></li>
-    <li><a href="/FAQ/">FAQ</a></li>
-    <li><a href="/contact/">Contact Us</a></li>
-
-  </ul>
-
-  <!-- Mobile Navigation Dropdown -->
-  <div class="mobile-nav">
-    <div class="dropdown">
-        <button class="dropbtn" id="menuButton">Menu</button>
-        <div class="dropdown-content" id="menuDropdown">
-              <li><a href="/">Home</a></li>
-              <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
-              <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
-              <li><a href="/gifts/">Gifts</a></li>
-              <li><a href="/RSVP-form/" class="active">RSVP Form</a></li>
-              <li><a href="/itinerary/">Itinerary</a></li>
-              <li><a href="/FAQ/">FAQ</a></li>
-              <li><a href="/contact/">Contact Us</a></li>
+    <nav>
+      <!-- Desktop Navigation -->
+      <ul>
+        <li><a href="/">Home</a></li>
+        <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
+        <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
+        <li><a href="/gifts/">Gifts</a></li>
+        <li><a href="/RSVP-form/" class="active">RSVP Form</a></li>
+        <li><a href="/itinerary/">Itinerary</a></li>
+        <li><a href="/FAQ/">FAQ</a></li>
+        <li><a href="/contact/">Contact Us</a></li>
+    
+      </ul>
+    
+      <!-- Mobile Navigation Dropdown -->
+      <div class="mobile-nav">
+        <div class="dropdown">
+            <button class="dropbtn" id="menuButton">Menu</button>
+            <div class="dropdown-content" id="menuDropdown">
+                  <li><a href="/">Home</a></li>
+                  <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
+                  <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
+                  <li><a href="/gifts/">Gifts</a></li>
+                  <li><a href="/RSVP-form/" class="active">RSVP Form</a></li>
+                  <li><a href="/itinerary/">Itinerary</a></li>
+                  <li><a href="/FAQ/">FAQ</a></li>
+                  <li><a href="/contact/">Contact Us</a></li>
+            </div>
         </div>
     </div>
-</div>
-</nav>
-</div>
+    </nav>
+</header>
+<!-- </div> -->
 
 
 <body>
@@ -164,26 +162,45 @@
     <p>Please fill out the form below to RSVP for the wedding.</p>
     </div>
     <div class="formContent">
-    <p>If the form does not load, or if you have made a mistake in your entry, please refer to the 'Contact' page 'USER ERROR' section, and inform us of the issue.</p>
-    </div>
-    <div class="formContent">
     <form action="https://formsubmit.co/9544ed852fd42ddc9bcd26dff9ae760a" method="POST" class="formBackground">
-      <p>Will you be able to attend?</p>
+    <!-- <form action="https://formsubmit.co/olivertestingwebsite@gmail.com" method="POST" class="formBackground"> -->
+
+      <p>Will all those listed below be able to attend?</p>
       <div class="formContent">
           <label for="attendYes">Yes</label><br>
           <input type="radio" id="attendYes" name="attendance" value="YES" required>
           <label for="attendNo">No</label><br>
           <input type="radio" id="attendNo" name="attendance" value="NO">
       </div>
-        <label for="firstName">Forename</label><br>
-        <input type="text" id="firstName" name="first name" placeholder="Type here..." required>
-        <p></p>
-        <label for="lastName">Surname</label><br>
-        <input type="text" id="lastName" name="last name" placeholder="Type here..." required>
+
+      <div id="fieldContainer">
+        <div id="formFields">
+          <label for="firstName">Forename:</label>
+          <input type="text" id="firstName" name="first name" placeholder="Type here..." required>
+          <p></p>
+          <label for="lastName">Surname:</label>
+          <input type="text" id="lastName" name="last name" placeholder="Type here..." required>
+          <p></p>
+          <label for="comments">Comments:</label>
+          <input type="text" id="comments" name="comments" placeholder="Dietary requirements, allergies, etc..." required>
+          <p></p>
+        </div>
+      </div>
+      <p id="seperator">-------------------------------------------------------</p>
+
+        <button type="button" id="addRow">Add another person</button>
+        <br>
+        <br>
+        <div id="fieldContainer">
+            <div id="formFields">
+              <label for="lastName">Contact Email:</label>
+              <input type="email" id="email" name="email" placeholder="Email..." required>
+            </div>
+        </div>
+
         <div class="formContent">
-          <button type="submit">Send</button>
+          <button type="submit" id="submit">Send</button>
           <input type="hidden" name="_next" value="https://mary-and-sam.com/success/">
-          <!-- <input type="hidden" name="_next" value="http://127.0.0.1:3000/success/"> -->
           <input type="hidden" name="_captcha" value="false">
           <input id="familyInput" type="hidden" name="family">
         </div>
