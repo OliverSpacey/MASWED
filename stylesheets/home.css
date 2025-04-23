@@ -78,20 +78,21 @@ nav {
   }
 
   .contactEmail {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.665);
     color: black;
     padding: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
-    width: 100%;
+    width: 20%;
     /* max-width: 400px; */
   }
 
   .contact {
-    /* display: block; */
-    /* justify-content: center; */
-    /* align-items: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   header h1 {
@@ -141,6 +142,18 @@ nav {
     font-family: 'Dancing Script', cursive;
   }
 
+
+  .faqTitle {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scrollInfo {
+    display: none;
+  }
+
   .formTitle{
     display: flex;
     justify-content: center;
@@ -156,6 +169,12 @@ nav {
 
   .formContent p{
     margin: 0 0 2% 0;
+    text-align: center;
+    font-size: 14pt;
+  }
+
+  .info p{
+    font-size: 12pt;
   }
 
   .formContent label{
@@ -198,7 +217,6 @@ nav {
   }
 
   #addRow, .removeBtn {
-    background-color: b38600;
     padding: 2%;
     margin-top: 0;
     font-family: 'Times New Roman', Times, serif;
@@ -209,7 +227,22 @@ nav {
     background-color: green;
   }
 
+  #addRow:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    transition: none;
+    pointer-events: none;
+  }
+  
+
   .removeBtn {
+    background-color: red;
+  }
+
+  .removeBtn:hover {
     background-color: red;
   }
 
@@ -549,6 +582,35 @@ nav {
     font-family: 'Dancing Script', cursive;
   }
 
+  .contactEmail {
+    background-color: rgba(255, 255, 255, 0.665);
+    color: black;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    /* max-width: 400px; */
+  }
+
+  .contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .scrollInfo {
+    display: block;
+  }
+
+  .faqTitle {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .formTitle{
     display: flex;
     justify-content: center;
@@ -564,6 +626,15 @@ nav {
 
   .formContent p{
     margin: 0 0 2% 0;
+    text-align: center;
+  }
+
+  .info p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 12pt;
   }
 
   .formContent label{
@@ -638,7 +709,6 @@ nav {
 
   input {
     border: 2px solid #6a994e;
-    border-radius: 12px;
     padding: 5%;
     background: #f7f3e9;
     color: #3a3a3a;
