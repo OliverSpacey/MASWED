@@ -9,6 +9,6 @@ function getCookie(name) {
 }
 // Set the value of the input once the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    const familyValue = getCookie('userType'); // replace 'family' with the name of your cookie
+    const familyValue = getCookie('userType'); 
     document.getElementById('familyInput').value = familyValue || '';
   });

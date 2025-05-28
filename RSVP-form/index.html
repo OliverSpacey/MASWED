@@ -166,49 +166,97 @@
       </div>
     </div>
     <div class="formContent">
-    <form action="https://formsubmit.co/9544ed852fd42ddc9bcd26dff9ae760a" method="POST" class="formBackground">
-    <!-- <form action="https://formsubmit.co/olivertestingwebsite@gmail.com" method="POST" class="formBackground"> -->
 
-      <p>Will all those listed below be able to attend?</p>
-      <div class="formContent">
-          <label for="attendYes">Yes</label><br>
-          <input type="radio" id="attendYes" name="attendance" value="YES" required>
-          <label for="attendNo">No</label><br>
-          <input type="radio" id="attendNo" name="attendance" value="NO">
+   <form id="rsvp-form">
+    <p>Will all those listed below be able to attend?</p>
+    <div class="formContent">
+        <label for="attendYes">Yes</label><br>
+        <input type="radio" id="attendYes" name="attendance" value="YES" required>
+        <label for="attendNo">No</label><br>
+        <input type="radio" id="attendNo" name="attendance" value="NO">
+    </div>
+
+    <div id="fieldContainer">
+      <div class="fieldForms">
+        <h3>Guest 1</h3>
+        <label for="firstName">Forename:</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Type here..." required>
+        <p></p>
+        <label for="lastName">Surname:</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Type here..." required>
+        <p></p>
+        <label for="comments">Comments:</label>
+        <input type="text" id="comments" name="comments" placeholder="Dietary requirements, allergies, etc..." required>
+        <p></p>
       </div>
-
+    </div>
+    <hr>
       <div id="fieldContainer">
-        <div id="formFields">
-          <h3>Guest 1</h3>
-          <label for="firstName">Forename:</label>
-          <input type="text" id="firstName" name="first name" placeholder="Type here..." required>
-          <p></p>
-          <label for="lastName">Surname:</label>
-          <input type="text" id="lastName" name="last name" placeholder="Type here..." required>
-          <p></p>
-          <label for="comments">Comments:</label>
-          <input type="text" id="comments" name="comments" placeholder="Dietary requirements, allergies, etc..." required>
-          <p></p>
-        </div>
+          <div class="emailField">
+            <button type="button" id="addRow">Add another person</button>
+            <br>
+            <label for="lastName">Contact Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email..." required>
+          </div>
       </div>
-      <!-- <div class="separator"></div> -->
-      <hr>
-        <div id="fieldContainer">
-            <div id="formFields">
-              <button type="button" id="addRow">Add another person</button>
-              <br>
-              <label for="lastName">Contact Email:</label>
-              <input type="email" id="email" name="email" placeholder="Email..." required>
-            </div>
-        </div>
-
-        <div class="formContent">
-          <button type="submit" id="submit">Send</button>
-          <input type="hidden" name="_next" value="https://mary-and-sam.com/success/">
-          <input type="hidden" name="_captcha" value="false">
-          <input id="familyInput" type="hidden" name="family">
-        </div>
+      <div class="formContent">
+        <button type="submit" id="submit">Send</button>
+        <input id="familyInput" type="hidden" name="family">
+      </div>
    </form>
+   <script>
+    document.getElementById("rsvp-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+    
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyAZIQU8DxSQjbdsV3u-thDK5IBXb0w_nyHADJZtJGLtdWHCCe3PQ8hjYinKRriRk3U/exec";
+      const fieldSets = document.querySelectorAll(".fieldForms");
+    
+      var attendance = document.getElementsByName("attendance");
+      attendance.forEach((radio) => {
+        if (radio.checked) {
+          attendance = radio.value;
+        }
+      });
+
+
+      const submissionPromises = [];    
+      // Optional shared field (e.g. email or RSVP code)
+    
+      fieldSets.forEach((fieldSet, index) => {
+        var data = {}
+        data["family"] = document.getElementById("familyInput").value || "";
+        data["attendance"] = attendance;
+        data["email"] = document.getElementById("email").value.trim();
+        const inputs = fieldSet.querySelectorAll("input");
+        inputs.forEach(input => {
+          data[input.name] = input.value.trim();
+          console.log(`${input.name}: ${data[input.name]}`);
+        });
+    
+        submissionPromises.push(
+          fetch(scriptURL, {
+            method: "POST",
+            mode: "no-cors", // Use "cors" if debugging
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          })
+        );
+      });
+    
+      try {
+        await Promise.all(submissionPromises);
+        //redirect to /success page
+        window.location.href = "../success/";
+      } catch (err) {
+        console.error("Submission failed", err);
+        alert("Something went wrong. Please try again.");
+      }
+    });
+    </script>
+    
+
    </div>
 
 </body>
