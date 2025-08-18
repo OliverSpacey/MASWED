@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     list-style: none;
-    background-color: #faf3dd; /* Blush pink background */
+    background-color: #faf3dd; 
     padding: 5%;
     margin: 0;
   }
@@ -21,7 +21,7 @@
 nav {
   display: flex;
   justify-content: space-between;
-
+  padding-bottom: 3%;
 }
 
   nav ul {
@@ -102,13 +102,17 @@ nav {
 
   header {
     display: flex;
-    padding: 0 5% 0 5%;
+    /* padding: 0 5% 0 5%; */
     align-items: center;
     background-color: #faf3dd;
     color: black;
     font-family: 'Cormorant Garamond', serif;
     width: 100%;
-    /* font-family: 'Dancing Script', cursive; */
+    border-bottom: 2px solid black; /*Black underline*/
+    /* Lock header to top of page */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
   }
 
   .flourish {
@@ -165,6 +169,7 @@ nav {
     justify-content: center;
     align-items: center;
     font-size: small;
+    padding-top: 2%;
   }
 
   .formContent p{
@@ -173,14 +178,36 @@ nav {
     font-size: 14pt;
   }
 
+  .info {
+    background-color: #faf3dd;
+    border-bottom: 1px solid grey;
+  }
+
   .info p{
     font-size: 12pt;
   }
 
   .formContent label{
     font-family: 'Dancing Script', cursive;
-    font-size: small;
+    font-size: large;
     margin: 0;
+  }
+
+  #rsvp-form {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* make the center items longer as align-items makes them too thin*/
+    /* flex-wrap: nowrap; */
+    /* align-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+    padding: 2%;
+    margin-top: 2%;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    width: 80%;
   }
 
   .formBackground{
@@ -212,8 +239,10 @@ nav {
     /* align-items: center; */
   }
 
-  #email {
-    margin: 1% 0 5% 0;
+  #fieldContainer .emailField {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
 
   #addRow, .removeBtn {
@@ -273,7 +302,7 @@ nav {
     padding: 2%;
     background: #f7f3e9;
     color: #3a3a3a;
-    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.1); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -348,6 +377,7 @@ nav {
 
     height: 100vh;
     background-color: #faf3dd;
+    /* background-color: white; */
     font-family: 'Times New Roman', Times, serif;
     color: black;
     
@@ -538,7 +568,11 @@ nav {
   header {
     display: flex;
     justify-items: space-between;
-    padding: 0 5% 0 5%;
+    border-bottom: 2px solid black; /*Black underline*/
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+    /* padding: 0 5% 0 5%; */
     align-items: center;
     background-color: #faf3dd;
     color: black;
@@ -617,6 +651,18 @@ nav {
     
   }
 
+  #rsvp-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2%;
+    margin-top: 2%;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    width: 80%;
+  }
+
   .formContent{
     display: flex;
     justify-content: center;
@@ -639,7 +685,7 @@ nav {
 
   .formContent label{
     font-family: 'Dancing Script', cursive;
-    font-size: small;
+    font-size: large;
     margin: 0;
   }
 
@@ -674,6 +720,12 @@ nav {
 
   #email {
     margin: 1% 0 5% 0;
+  }
+
+  #fieldContainer .emailField {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
 
   #addRow, .removeBtn {
