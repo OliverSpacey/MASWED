@@ -863,6 +863,10 @@ nav {
     background-attachment: fixed;
   }
 
+  body::before {
+    background-attachment: fixed;
+  }
+
   nav {
     justify-content: center;
     align-items: center;
