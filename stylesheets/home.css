@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     list-style: none;
-    background-color: #faf3dd; 
+    /* background-color: #faf3dd;  */
     padding: 5%;
     margin: 0;
   }
@@ -113,6 +113,12 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure it stays above other content */
+    background-image: url('../images/flowers_background.png');
+    background-position: left;
+    /* background-repeat: no-repeat; */
+    background-repeat: repeat-x;
+    background-position-y: bottom;
+    background-size: 60px;
   }
 
   .flourish {
@@ -129,7 +135,11 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* color: #b38600;  */
     color: #b38600; 
+    text-shadow: 4px 4px 4px rgba(255, 255, 255, 1);
+    /* add text outline */    
+
   }
 
   .flourish .swirl {
@@ -204,7 +214,7 @@ nav {
     flex-direction: column;
     padding: 2%;
     margin-top: 2%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.85);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     width: 80%;
@@ -380,6 +390,9 @@ nav {
     /* background-color: white; */
     font-family: 'Times New Roman', Times, serif;
     color: black;
+    background-image: url('../images/flowers_title3.png');
+    background-size: cover;
+    background-attachment: fixed;
     
   }
 
@@ -545,9 +558,10 @@ nav {
     display: flex;
     justify-content: center;
     list-style: none;
-    background-color: #faf3dd; /* Blush pink background */
+    /* background-color: #faf3dd; Blush pink background */
     padding: 5%;
     margin: 10% 0 0 0;
+    z-index: 0;
   }
 
   nav li a {
@@ -577,6 +591,12 @@ nav {
     background-color: #faf3dd;
     color: black;
     font-family: 'Cormorant Garamond', serif;
+    background-image: url('../images/flowers_background.png');
+    background-position: left;
+    /* background-repeat: no-repeat; */
+    background-repeat: repeat-x;
+    background-position-y: bottom;
+    background-size: 100px;
   }
 
   .flourish {
@@ -657,7 +677,7 @@ nav {
     flex-direction: column;
     padding: 2%;
     margin-top: 2%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.85);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     width: 80%;
@@ -691,7 +711,7 @@ nav {
 
   .formBackground{
     padding: 5%;
-    background-color:rgba(255, 255, 255, 0.5);
+    background-color:rgba(255, 255, 255, 0.85);
     font-family: 'Times New Roman', Times, serif;
     font-size: 20pt;
   }
@@ -838,6 +858,9 @@ nav {
     background-color: #faf3dd;
     font-family: 'Times New Roman', Times, serif;
     color: black;
+    background-image: url('../images/flowers_title3.png');
+    background-size: cover;
+    background-attachment: fixed;
   }
 
   nav {
