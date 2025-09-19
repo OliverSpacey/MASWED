@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  const webAppUrl = "https://script.google.com/macros/s/AKfycby6Z4qmFXXvSwMcU3If3x-4sLM-smx9WSteJdo1Yvv-zHR_XMbyKm2f5NzO4aJbM0Glkg/exec";
+  const webAppUrl = "https://script.google.com/macros/s/AKfycbxeUJCXhWtRLggSCFZAtStRMnZxh-f3eTfCNX-CGyEJNQDjXYQP2wjGehHxSfCdBqif/exec";
 
-  // Find the container that actually contains .fieldForms (robust against duplicate IDs)
   const allContainers = Array.from(document.querySelectorAll('#fieldContainer'));
   const fieldContainer = allContainers.find(c => c.querySelector('.fieldForms')) || document.getElementById('fieldContainer');
 
@@ -11,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   limitMessage.textContent = 'You can only add up to 10 guests.';
   limitMessage.style.color = 'red';
   limitMessage.style.display = 'none';
-  // insert limit message after the container that holds the addRow button (if present)
+
   if (addRowBtn && addRowBtn.parentNode) {
     addRowBtn.parentNode.insertBefore(limitMessage, addRowBtn.nextSibling);
   }
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // UI helpers for submit button
   function setSubmitEnabled(enabled) {
-    const btn = document.getElementById('submit'); // your page uses id="submit"
+    const btn = document.getElementById('submit');
     if (!btn) return;
     btn.disabled = !enabled;
     if (enabled) {
@@ -234,5 +233,65 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('focus', () => {
     loadGuestList();
   });
+
+    // ---- SUBMIT HANDLER ----
+    const submitBtn = document.getElementById('submit');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', async function (e) {
+        e.preventDefault();
+  
+        // Disable button to prevent double clicks
+        submitBtn.disabled = true;
+        const oldText = submitBtn.textContent;
+        submitBtn.textContent = "Submitting...";
+  
+        // Collect all guest rows
+        const rows = Array.from(fieldContainer.querySelectorAll('.fieldForms'));
+        const payload = new URLSearchParams();
+  
+        rows.forEach((row, i) => {
+          const first = row.querySelector('input[name="firstName"]')?.value.trim() || '';
+          const last = row.querySelector('input[name="lastName"]')?.value.trim() || '';
+          const comments = row.querySelector('input[name="comments"]')?.value.trim() || '';
+  
+          if (first || last) {
+            // Append with an index so Apps Script can distinguish rows
+            payload.append(`firstName${i}`, first);
+            payload.append(`lastName${i}`, last);
+            payload.append(`comments${i}`, comments);
+          }
+        });
+  
+        // Add total guest count so Apps Script knows how many to expect
+        payload.append("guestCount", rows.length);
+  
+        try {
+          const res = await fetch(webAppUrl, {
+            method: "POST",
+            body: payload
+          });
+  
+          const data = await res.json();
+          console.log("Submission response:", data);
+  
+          if (data.status === "ok") {
+            alert("RSVP submitted successfully! Thank you.");
+            // Optionally reset form
+            // fieldContainer.innerHTML = "";
+            // createFieldSet();
+          } else {
+            alert("Error: " + data.message);
+          }
+        } catch (err) {
+          console.error("Error submitting RSVP", err);
+          alert("There was an error submitting your RSVP. Please try again later.");
+        } finally {
+          // Re-enable button
+          submitBtn.disabled = false;
+          submitBtn.textContent = oldText;
+        }
+      });
+    }
+  
 
 });
