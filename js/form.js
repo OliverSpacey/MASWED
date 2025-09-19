@@ -240,6 +240,16 @@ document.addEventListener('DOMContentLoaded', function () {
   submitBtn.addEventListener('click', async function (e) {
     e.preventDefault();
 
+    // check form validity
+    const form = document.getElementById('rsvp-form');
+    if (!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    else if (checkDuplicates(form) === true ){
+      return;
+    };
+
     // Disable button + show loading text
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting…";
@@ -299,6 +309,51 @@ document.addEventListener('DOMContentLoaded', function () {
       input.value = input.value.replace(/[0-9]/g, "");
     });
   }
-  
 
+  function checkDuplicates(form) {
+    const fieldSets = form.querySelectorAll(".fieldForms");
+    let duplicatesFound = false;
+  
+    // Clear old warnings first
+    fieldSets.forEach(fieldSet => {
+      const oldWarn = fieldSet.querySelector(".duplicate-warning");
+      if (oldWarn) oldWarn.remove();
+      const inputs = fieldSet.querySelectorAll("input[name='firstName'], input[name='lastName']");
+      inputs.forEach(inp => inp.style.borderColor = "");
+    });
+  
+    const seen = new Set();
+  
+    fieldSets.forEach((fieldSet) => {
+      const firstNameInput = fieldSet.querySelector('input[name="firstName"]');
+      const lastNameInput = fieldSet.querySelector('input[name="lastName"]');
+      const firstName = firstNameInput.value.trim().toLowerCase();
+      const lastName = lastNameInput.value.trim().toLowerCase();
+      const key = `${firstName} ${lastName}`;
+  
+      if (seen.has(key) && firstName && lastName) {
+        duplicatesFound = true;
+  
+        // highlight fields
+        firstNameInput.style.borderColor = "red";
+        lastNameInput.style.borderColor = "red";
+  
+        // add warning text if missing
+        let warn = fieldSet.querySelector(".duplicate-warning");
+        if (!warn) {
+          warn = document.createElement("div");
+          warn.className = "duplicate-warning";
+          warn.style.color = "#b30000";
+          warn.style.fontSize = "0.9em";
+          warn.style.marginTop = "0.3em";
+          lastNameInput.parentNode.insertBefore(warn, lastNameInput.nextSibling);
+        }
+        warn.textContent = "This guest appears more than once in your RSVP.";
+      } else {
+        seen.add(key);
+      }
+    });
+  
+    return duplicatesFound;
+  }  
 });
