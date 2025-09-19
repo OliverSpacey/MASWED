@@ -13,6 +13,73 @@
     text-align: center;
   }
 
+ 
+
+  .timeline {
+    position: relative;
+    margin: 2rem auto;
+    padding: 2rem 0;
+    width: 80%;
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 20%;
+    font-family: 'Great Vibes', cursive;
+  }
+  
+  .timeline::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background-color: black;
+  }
+  
+  .container {
+    padding: 1rem 2rem;
+    position: relative;
+    width: 50%;
+  }
+  
+  .container.left {
+    right: 50px;
+    text-align: right;
+  }
+  
+  .container.right {
+    left: 50%;
+  }
+  
+  .container .content {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Small arrows pointing at the timeline */
+  .container.left .content::after {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    right: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }
+  
+  .container.right .content::after {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    left: -10px;
+    border-width: 10px;
+    border-style: dashed;
+    border-color: transparent transparent transparent black;
+  }
+  
   
 
 /* Desktop Navigation */
@@ -182,10 +249,16 @@ nav {
     padding-top: 2%;
   }
 
+  .formContent h3{
+    margin: 0 0 2% 0;
+    text-align: center;
+    font-size: 25pt;
+  }
+
   .formContent p{
     margin: 0 0 2% 0;
     text-align: center;
-    font-size: 14pt;
+    font-size: 20pt;
   }
 
   .info {
@@ -194,13 +267,14 @@ nav {
   }
 
   .info p{
-    font-size: 12pt;
+    font-size: 16pt;
   }
 
   .formContent label{
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Great Vibes', cursive;
     font-size: large;
     margin: 0;
+    font-size: 20pt;
   }
 
   #rsvp-form {
@@ -223,7 +297,7 @@ nav {
   .formBackground{
     padding: 5%;
     background-color:rgba(255, 255, 255, 0.5);
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Great Vibes', cursive;
     font-size: 20pt;
   }
 
@@ -258,8 +332,8 @@ nav {
   #addRow, .removeBtn {
     padding: 2%;
     margin-top: 0;
-    font-family: 'Times New Roman', Times, serif;
-
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family: 'Great Vibes', cursive;
   }
 
   #addRow {
@@ -354,8 +428,9 @@ nav {
     content: '✓'; 
     font-size: 20px;
     color: #6a994e; 
-    font-family: 'Dancing Script', cursive; 
+    font-family: 'Great Vibes', cursive;
     position: absolute;
+    /* sit in the middle of the checkbox */
     left: 4px;
     top: -2px;
   }
@@ -369,7 +444,7 @@ nav {
     background-color: #b7a700; /*#6a994e;  Green color matching your underline */
     color: white;
     font-size: 18px;
-    font-family: 'Dancing Script', cursive; 
+    font-family: 'Great Vibes', cursive;
     margin-top: 0;
     padding: 1% 1%;
     border-radius: 12px;
@@ -399,7 +474,9 @@ nav {
     height: 100vh;
     background-color: #faf3dd;
     /* background-color: white; */
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family: 'Great Vibes', cursive;
+    font-size: 15pt;
     color: black;
     background-image: url('../images/flowers_title3.png');
     background-size: cover;
