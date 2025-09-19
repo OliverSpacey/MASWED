@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  const webAppUrl = "https://script.google.com/macros/s/AKfycbxeUJCXhWtRLggSCFZAtStRMnZxh-f3eTfCNX-CGyEJNQDjXYQP2wjGehHxSfCdBqif/exec";
+  const webAppUrl = "https://script.google.com/macros/s/AKfycby6Z4qmFXXvSwMcU3If3x-4sLM-smx9WSteJdo1Yvv-zHR_XMbyKm2f5NzO4aJbM0Glkg/exec";
 
   const allContainers = Array.from(document.querySelectorAll('#fieldContainer'));
   const fieldContainer = allContainers.find(c => c.querySelector('.fieldForms')) || document.getElementById('fieldContainer');
@@ -73,6 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const first = row.querySelector('input[name="firstName"]');
     const last = row.querySelector('input[name="lastName"]');
+    preventNumbers(first);
+    preventNumbers(last);
 
     if (!first || !last) return;
 
@@ -234,64 +236,69 @@ document.addEventListener('DOMContentLoaded', function () {
     loadGuestList();
   });
 
-    // ---- SUBMIT HANDLER ----
-    const submitBtn = document.getElementById('submit');
-    if (submitBtn) {
-      submitBtn.addEventListener('click', async function (e) {
-        e.preventDefault();
+  const submitBtn = document.getElementById('submit');
+  submitBtn.addEventListener('click', async function (e) {
+    e.preventDefault();
+
+    // Disable button + show loading text
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting…";
+    submitBtn.style.opacity = "0.6";
+    submitBtn.style.cursor = "not-allowed";
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycby6Z4qmFXXvSwMcU3If3x-4sLM-smx9WSteJdo1Yvv-zHR_XMbyKm2f5NzO4aJbM0Glkg/exec";
+    const fieldSets = document.querySelectorAll(".fieldForms");
   
-        // Disable button to prevent double clicks
-        submitBtn.disabled = true;
-        const oldText = submitBtn.textContent;
-        submitBtn.textContent = "Submitting...";
+    let attendance = "";
+    document.getElementsByName("attendance").forEach((radio) => {
+      if (radio.checked) {
+        attendance = radio.value;
+      }
+    });
   
-        // Collect all guest rows
-        const rows = Array.from(fieldContainer.querySelectorAll('.fieldForms'));
-        const payload = new URLSearchParams();
-  
-        rows.forEach((row, i) => {
-          const first = row.querySelector('input[name="firstName"]')?.value.trim() || '';
-          const last = row.querySelector('input[name="lastName"]')?.value.trim() || '';
-          const comments = row.querySelector('input[name="comments"]')?.value.trim() || '';
-  
-          if (first || last) {
-            // Append with an index so Apps Script can distinguish rows
-            payload.append(`firstName${i}`, first);
-            payload.append(`lastName${i}`, last);
-            payload.append(`comments${i}`, comments);
-          }
-        });
-  
-        // Add total guest count so Apps Script knows how many to expect
-        payload.append("guestCount", rows.length);
-  
-        try {
-          const res = await fetch(webAppUrl, {
-            method: "POST",
-            body: payload
-          });
-  
-          const data = await res.json();
-          console.log("Submission response:", data);
-  
-          if (data.status === "ok") {
-            alert("RSVP submitted successfully! Thank you.");
-            // Optionally reset form
-            // fieldContainer.innerHTML = "";
-            // createFieldSet();
-          } else {
-            alert("Error: " + data.message);
-          }
-        } catch (err) {
-          console.error("Error submitting RSVP", err);
-          alert("There was an error submitting your RSVP. Please try again later.");
-        } finally {
-          // Re-enable button
-          submitBtn.disabled = false;
-          submitBtn.textContent = oldText;
-        }
+    const submissionPromises = [];    
+
+    fieldSets.forEach((fieldSet, index) => {
+      let data = {};
+      data["family"] = document.getElementById("familyInput").value || "";
+      data["attendance"] = attendance;
+      data["email"] = document.getElementById("email").value.trim();
+      const inputs = fieldSet.querySelectorAll("input");
+      inputs.forEach(input => {
+        data[input.name] = input.value.trim();
       });
+  
+      submissionPromises.push(
+        fetch(scriptURL, {
+          method: "POST",
+          mode: "no-cors", // Use "cors" if debugging
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        })
+      );
+    });
+  
+    try {
+      await Promise.all(submissionPromises);
+      window.location.href = "../success/"; // redirect if ok
+    } catch (err) {
+      console.error("Submission failed", err);
+      alert("Something went wrong. Please try again.");
+      // Re-enable so user can retry
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit";
+      submitBtn.style.opacity = "1";
+      submitBtn.style.cursor = "pointer";
     }
+  });
+
+  function preventNumbers(input) {
+    input.addEventListener("input", () => {
+      input.value = input.value.replace(/[0-9]/g, "");
+    });
+  }
   
 
 });

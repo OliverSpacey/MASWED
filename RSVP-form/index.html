@@ -123,8 +123,6 @@
       <!-- Desktop Navigation -->
       <ul>
         <li><a href="/">Home</a></li>
-        <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
-        <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
         <li><a href="/gifts/">Gifts</a></li>
         <li><a href="/RSVP-form/" class="active">RSVP Form</a></li>
         <li><a href="/itinerary/">Itinerary</a></li>
@@ -139,8 +137,6 @@
             <button class="dropbtn" id="menuButton">Menu</button>
             <div class="dropdown-content" id="menuDropdown">
                   <li><a href="/">Home</a></li>
-                  <!-- <li><a href="/guest-information/">Guest Information</a></li> -->
-                  <!-- <li><a href="/venue-information/">Venue Information</a></li> -->
                   <li><a href="/gifts/">Gifts</a></li>
                   <li><a href="/RSVP-form/" class="active">RSVP Form</a></li>
                   <li><a href="/itinerary/">Itinerary</a></li>
@@ -206,57 +202,6 @@
         <input id="familyInput" type="hidden" name="family">
       </div>
    </form>
-   <!-- <script>
-    document.getElementById("rsvp-form").addEventListener("submit", async function (e) {
-      e.preventDefault();
-    
-      const scriptURL = "https://script.google.com/macros/s/AKfycbxAaFS1WBPicE9eKRJQ_dbYL84DogYHbbSuKPLewzwnoBAm915uK8uuTfH7D9JUvsK5ag/exec";
-      const fieldSets = document.querySelectorAll(".fieldForms");
-    
-      var attendance = document.getElementsByName("attendance");
-      attendance.forEach((radio) => {
-        if (radio.checked) {
-          attendance = radio.value;
-        }
-      });
-    
-    
-      const submissionPromises = [];    
-      // Optional shared field (e.g. email or RSVP code)
-    
-      fieldSets.forEach((fieldSet, index) => {
-        var data = {}
-        data["family"] = document.getElementById("familyInput").value || "";
-        data["attendance"] = attendance;
-        data["email"] = document.getElementById("email").value.trim();
-        const inputs = fieldSet.querySelectorAll("input");
-        inputs.forEach(input => {
-          data[input.name] = input.value.trim();
-          console.log(`${input.name}: ${data[input.name]}`);
-        });
-    
-        submissionPromises.push(
-          fetch(scriptURL, {
-            method: "POST",
-            mode: "no-cors", // Use "cors" if debugging
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          })
-        );
-      });
-    
-      try {
-        await Promise.all(submissionPromises);
-        //redirect to /success page
-        window.location.href = "../success/";
-      } catch (err) {
-        console.error("Submission failed", err);
-        alert("Something went wrong. Please try again.");
-      }
-    });
-   </script> -->
    </div>
 
 </body>
