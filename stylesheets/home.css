@@ -285,10 +285,21 @@ nav {
     background-color: red;
   }
 
-
-  #submit {
-    padding: 2% 5% 2% 5%;
+  #rsvp-warning {
+    display: none;
+    color: #b30000;
+    font-size: 0.9em;
+    margin-top: 0.5em;
   }
+  #submit {
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background-color: #4CAF50; /* normal green */
+  }
+  
 
   /* #seperator {
     padding: 0;

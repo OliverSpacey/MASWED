@@ -1,91 +1,238 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    const addRowBtn = document.getElementById('addRow');
-    const fieldContainer = document.getElementById('fieldContainer');
-    let rowCount = 0; // To ensure unique IDs
-    const limitMessage = document.createElement('p');
-    limitMessage.textContent = 'You can only add up to 10 guests.';
-    limitMessage.style.color = 'red';
-    limitMessage.style.display = 'none'; // hidden by default
-    fieldContainer.parentNode.insertBefore(limitMessage, fieldContainer.nextSibling);
+  const webAppUrl = "https://script.google.com/macros/s/AKfycby6Z4qmFXXvSwMcU3If3x-4sLM-smx9WSteJdo1Yvv-zHR_XMbyKm2f5NzO4aJbM0Glkg/exec";
 
-  
-    function createFieldSet() {
-        const existingForms = fieldContainer.querySelectorAll('.fieldForms');
-        if (existingForms.length >= 10) {
-          return; // Don't create more than 9
+  // Find the container that actually contains .fieldForms (robust against duplicate IDs)
+  const allContainers = Array.from(document.querySelectorAll('#fieldContainer'));
+  const fieldContainer = allContainers.find(c => c.querySelector('.fieldForms')) || document.getElementById('fieldContainer');
+
+  const addRowBtn = document.getElementById('addRow');
+  const limitMessage = document.createElement('p');
+  limitMessage.textContent = 'You can only add up to 10 guests.';
+  limitMessage.style.color = 'red';
+  limitMessage.style.display = 'none';
+  // insert limit message after the container that holds the addRow button (if present)
+  if (addRowBtn && addRowBtn.parentNode) {
+    addRowBtn.parentNode.insertBefore(limitMessage, addRowBtn.nextSibling);
+  }
+
+  // Start rowCount from existing number of guest blocks (keeps numbering sensible)
+  let rowCount = (fieldContainer ? fieldContainer.querySelectorAll('.fieldForms').length : 0);
+
+  // guest list loaded from Sheets
+  let guestList = [];
+
+  // Fetch current guest list from Apps Script
+  async function loadGuestList() {
+    try {
+      const res = await fetch(webAppUrl);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      guestList = await res.json();
+      console.log('guestList loaded', guestList);
+      validateAll();
+    } catch (err) {
+      console.error('Could not load guest list', err);
+    }
+  }
+
+  // helper string normalization
+  function normalize(s) {
+    return (s || '').toString().toLowerCase().trim();
+  }
+
+  function checkGuestExists(first, last) {
+    const firstToCheck = normalize(first);
+    const lastToCheck = normalize(last);
+    if (!firstToCheck && !lastToCheck) return false;
+    return guestList.some(guest => normalize(guest.first) === firstToCheck && normalize(guest.last) === lastToCheck);
+  }
+
+  // UI helpers for submit button
+  function setSubmitEnabled(enabled) {
+    const btn = document.getElementById('submit'); // your page uses id="submit"
+    if (!btn) return;
+    btn.disabled = !enabled;
+    if (enabled) {
+      btn.style.opacity = '1';
+      btn.style.cursor = 'pointer';
+      btn.style.pointerEvents = 'auto';
+      btn.classList.remove('disabled-submit');
+      btn.title = '';
+    } else {
+      btn.style.opacity = '0.6';
+      btn.style.cursor = 'not-allowed';
+      btn.style.pointerEvents = 'none';
+      btn.classList.add('disabled-submit');
+      btn.title = 'One or more guests are already registered.';
+    }
+  }
+
+  // Ensure a warning element exists in a row and attach input listeners (only once)
+  function attachRowListeners(row) {
+    if (!row) return;
+    if (row.dataset.listenersAttached === 'true') return;
+
+    const first = row.querySelector('input[name="firstName"]');
+    const last = row.querySelector('input[name="lastName"]');
+
+    if (!first || !last) return;
+
+    // create a small warning element if missing
+    let warn = row.querySelector('.name-warning');
+    if (!warn) {
+      warn = document.createElement('div');
+      warn.className = 'name-warning';
+      warn.style.color = '#b30000';
+      warn.style.fontSize = '0.9em';
+      warn.style.marginTop = '0.3em';
+      // append after the last name input
+      last.parentNode.insertBefore(warn, last.nextSibling);
+    }
+
+    const handler = () => validateAll();
+    first.addEventListener('input', handler);
+    last.addEventListener('input', handler);
+
+    row.dataset.listenersAttached = 'true';
+  }
+
+  // Validate all rows, show per-row warnings and enable/disable submit
+  function validateAll() {
+    if (!fieldContainer) return;
+    const rows = Array.from(fieldContainer.querySelectorAll('.fieldForms'));
+    let anyDuplicate = false;
+
+    rows.forEach(row => {
+      const first = row.querySelector('input[name="firstName"]');
+      const last = row.querySelector('input[name="lastName"]');
+      const warn = row.querySelector('.name-warning');
+
+      const fVal = first ? first.value.trim() : '';
+      const lVal = last ? last.value.trim() : '';
+
+      // if both empty -> clear warning
+      if (!fVal && !lVal) {
+        if (warn) warn.textContent = '';
+        row.classList.remove('duplicate');
+        return;
+      }
+
+      if (checkGuestExists(fVal, lVal)) {
+        anyDuplicate = true;
+        if (warn) warn.textContent = 'This person is already on the RSVP list. Please contact us to amend or remove them.';
+        row.classList.add('duplicate');
+      } else {
+        if (warn) warn.textContent = '';
+        row.classList.remove('duplicate');
+      }
+    });
+
+    setSubmitEnabled(!anyDuplicate);
+  }
+
+  // createFieldSet + attach listeners and limit handling (this preserves your original behaviour)
+  function createFieldSet() {
+    if (!fieldContainer) return;
+    const existingForms = fieldContainer.querySelectorAll('.fieldForms');
+    if (existingForms.length >= 10) {
+      return; // limit
+    }
+
+    rowCount++;
+    const newRow = document.createElement('div');
+    newRow.classList.add('fieldForms');
+
+    newRow.innerHTML = `
+      <hr>
+      <h3>Guest ${rowCount}</h3>
+      <label for="firstName${rowCount}">Forename:</label>
+      <input type="text" id="firstName${rowCount}" name="firstName" placeholder="Forename..." required>
+      <p></p>
+      <label for="lastName${rowCount}">Surname:</label>
+      <input type="text" id="lastName${rowCount}" name="lastName" placeholder="Surname..." required>
+      <p></p>
+      <label for="comments${rowCount}">Comments:</label>
+      <input type="text" id="comments${rowCount}" name="comments" placeholder="Dietary requirements, allergies, etc..." required>
+      <p></p>
+    `;
+
+    fieldContainer.appendChild(newRow);
+
+    // attach listeners for validation, update remove buttons and numbers
+    attachRowListeners(newRow);
+    updateRemoveButtons();
+    updateGuestNumbers();
+
+    // Check limit message
+    if (fieldContainer.querySelectorAll('.fieldForms').length >= 10) {
+      if (addRowBtn) addRowBtn.disabled = true;
+      limitMessage.style.display = 'block';
+    }
+
+    // run validation for the new row
+    validateAll();
+  }
+
+  function updateRemoveButtons() {
+    if (!fieldContainer) return;
+    const allRows = fieldContainer.querySelectorAll('.fieldForms');
+    const allRemoveButtons = fieldContainer.querySelectorAll('.removeBtn');
+
+    allRemoveButtons.forEach(btn => btn.remove());
+
+    allRows.forEach(row => {
+      // add a remove button for rows except the first (Guest 1)
+      const heading = row.querySelector('h3');
+      if (!heading) return;
+      if (heading.textContent !== 'Guest 1') {
+        // avoid adding duplicate remove buttons
+        if (!row.querySelector('.removeBtn')) {
+          const removeBtn = document.createElement('button');
+          removeBtn.type = 'button';
+          removeBtn.textContent = 'Remove this person';
+          removeBtn.className = 'removeBtn';
+          removeBtn.addEventListener('click', () => {
+            row.remove();
+            updateRemoveButtons();
+            updateGuestNumbers();
+
+            if (fieldContainer.querySelectorAll('.fieldForms').length < 10) {
+              if (addRowBtn) addRowBtn.disabled = false;
+              limitMessage.style.display = 'none';
+            }
+            validateAll();
+          });
+          row.appendChild(removeBtn);
         }
-      
-        rowCount++;
-        const newRow = document.createElement('div');
-        newRow.classList.add('fieldForms');
-      
-        newRow.innerHTML = `
-          <hr>
-          <h3>Guest ${rowCount}</h3>
-          <label for="firstName${rowCount}">Forename:</label>
-          <input type="text" id="firstName${rowCount}" name="firstName" placeholder="Forename..." required>
-          <p></p>
-          <label for="lastName${rowCount}">Surname:</label>
-          <input type="text" id="lastName${rowCount}" name="lastName" placeholder="Surname..." required>
-          <p></p>
-          <label for="comments${rowCount}">Comments:</label>
-          <input type="text" id="comments${rowCount}" name="comments" placeholder="Dietary requirements, allergies, etc..." required>
-          <p></p>
-        `;
-      
-        fieldContainer.appendChild(newRow);
-        // updateRemoveButtons();
-        updateGuestNumbers();
-        updateRemoveButtons();
-      
-        // Check if limit reached after adding
-        if (fieldContainer.querySelectorAll('.fieldForms').length >= 10) {
-          addRowBtn.disabled = true;
-          limitMessage.style.display = 'block';
-        }
-    }
-      
-  
-    function updateRemoveButtons() {
-        const allRows = fieldContainer.querySelectorAll('.fieldForms');
-        const allRemoveButtons = fieldContainer.querySelectorAll('.removeBtn');
-      
-        allRemoveButtons.forEach(btn => btn.remove());
-      
-        allRows.forEach(row => {
-          //check for first row
-          if ((row.querySelector('h3').textContent != 'Guest 1')) {
-            const removeBtn = document.createElement('button');
-            removeBtn.type = 'button';
-            removeBtn.textContent = 'Remove this person';
-            removeBtn.className = 'removeBtn';
-            removeBtn.addEventListener('click', () => {
-              row.remove();
-              updateRemoveButtons();
-              updateGuestNumbers();
-              
-              if (fieldContainer.querySelectorAll('.fieldForms').length < 10) {
-                addRowBtn.disabled = false;
-                limitMessage.style.display = 'none';
-              }
-            });
-            row.appendChild(removeBtn);
-          }
-        });
-    }
-      
-    function updateGuestNumbers() {
-        const allGuests = fieldContainer.querySelectorAll('.fieldForms');
-        allGuests.forEach((row, index) => {
-          const heading = row.querySelector('h3');
-          if (heading) {
-            heading.textContent = `Guest ${index + 1}`;
-          }
-        });
-    }
-      
-  
-    addRowBtn.addEventListener('click', createFieldSet);
+      }
+      // ensure validation listeners present for every row
+      attachRowListeners(row);
+    });
+  }
+
+  function updateGuestNumbers() {
+    if (!fieldContainer) return;
+    const allGuests = fieldContainer.querySelectorAll('.fieldForms');
+    allGuests.forEach((row, index) => {
+      const heading = row.querySelector('h3');
+      if (heading) heading.textContent = `Guest ${index + 1}`;
+    });
+  }
+
+  // Wire up Add Row button
+  if (addRowBtn) addRowBtn.addEventListener('click', createFieldSet);
+
+  // Attach to existing rows
+  if (fieldContainer) {
+    fieldContainer.querySelectorAll('.fieldForms').forEach(r => attachRowListeners(r));
+  }
+
+  // Load guest list first then run an initial validation
+  loadGuestList();
+
+  // Also re-validate on page focus (handy if sheet updated in another tab)
+  window.addEventListener('focus', () => {
+    loadGuestList();
   });
-  
+
+});

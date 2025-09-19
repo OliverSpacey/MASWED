@@ -219,8 +219,8 @@
           attendance = radio.value;
         }
       });
-
-
+    
+    
       const submissionPromises = [];    
       // Optional shared field (e.g. email or RSVP code)
     
@@ -256,57 +256,7 @@
         alert("Something went wrong. Please try again.");
       }
     });
-
-    let guestList = [];
-
-    // Load existing guests from the sheet
-    async function loadGuestList() {
-      try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycby6Z4qmFXXvSwMcU3If3x-4sLM-smx9WSteJdo1Yvv-zHR_XMbyKm2f5NzO4aJbM0Glkg/exec");
-        guestList = await res.json();
-      } catch (err) {
-        console.error("Could not load guest list", err);
-      }
-    }
-    
-    // Check if name exists
-    function checkGuestExists(first, last) {
-      return guestList.some(
-        g => g.first === first.toLowerCase().trim() && g.last === last.toLowerCase().trim()
-      );
-    }
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      const firstInput = document.querySelector("#firstName");
-      const lastInput = document.querySelector("#lastName");
-      const submitBtn = document.querySelector("#submit");
-    
-      function validate() {
-        if (!firstInput.value || !lastInput.value) {
-          submitBtn.disabled = true;
-          return;
-        }
-    
-        if (checkGuestExists(firstInput.value, lastInput.value)) {
-          submitBtn.disabled = true;
-          submitBtn.title = "This guest is already registered.";
-        } else {
-          submitBtn.disabled = false;
-          submitBtn.title = "";
-        }
-      }
-    
-      [firstInput, lastInput].forEach(input =>
-        input.addEventListener("input", validate)
-      );
-    
-      loadGuestList();
-    });
-    
-
-    </script>
-    
-
+   </script>
    </div>
 
 </body>
