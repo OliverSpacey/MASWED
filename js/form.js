@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
       warn = document.createElement('div');
       warn.className = 'name-warning';
       warn.style.color = '#b30000';
-      warn.style.fontSize = '0.9em';
+      warn.style.fontSize = '1.5em';
       warn.style.marginTop = '0.3em';
       // append after the last name input
       last.parentNode.insertBefore(warn, last.nextSibling);
