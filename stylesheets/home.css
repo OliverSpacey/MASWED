@@ -23,7 +23,7 @@
     background-color: rgba(255,255,255,0.8);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 20%;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', serif
   }
   
   .timeline::after {
@@ -475,7 +475,7 @@ nav {
     background-color: #faf3dd;
     /* background-color: white; */
     /* font-family: 'Times New Roman', Times, serif; */
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 15pt;
     color: black;
     background-image: url('../images/flowers_title3.png');
@@ -532,7 +532,7 @@ nav {
     background-color: #f7f3e9;
     color: #6a994e;
     font-size: 16px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Cormorant Garamond', serif;
     padding: 0.5rem 1rem;
     margin-top: 1%;
     border: 2px solid #6a994e;
@@ -540,6 +540,14 @@ nav {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Ensure the text is centered */
+  #category-text p {
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    color: black;
   }
 
   #category-buttons button:hover {
@@ -783,6 +791,11 @@ nav {
     text-align: center;
   }
 
+  .info {
+    background-color: #faf3dd;
+    border-bottom: 1px solid grey;
+  }
+
   .info p{
     display: flex;
     justify-content: center;
@@ -950,7 +963,7 @@ nav {
 
   body {
     background-color: #faf3dd;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', serif;
     color: black;
     /* background-image: url('/../images/flowers_title3.png');
     background-size: cover;
@@ -1015,7 +1028,7 @@ nav {
     background-color: #f7f3e9;
     color: #6a994e;
     font-size: 16px;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', serif;
     padding: 0.4rem 0.8rem;
     margin-top: 1%;
     border: 2px solid #6a994e;
@@ -1062,7 +1075,7 @@ nav {
   #category-text p {
     margin: 0;
     font-size: 16px;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', serif;
     color: black;
   }
 }
