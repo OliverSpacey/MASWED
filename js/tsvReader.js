@@ -45,21 +45,6 @@ async function displayData() {
         categoryDiv.style.display = "none"; // Initially hide each category's content
 
         const categoryData = categorizedData[categoryId];
-        // categoryData.forEach(item => {
-        //     const div = document.createElement("div");
-        //     div.innerHTML = `<p><strong>${item.Question}</strong><br>${item["Answer"]}</p><br>`;
-        //     categoryDiv.appendChild(div);
-        // });
-        // categoryData.forEach(item => {
-        //     const div = document.createElement("div");
-        
-        //     // Replace literal "\n\n" in the TSV with paragraph breaks
-        //     const formattedAnswer = `<p>${item["Answer"]
-        //         .replace(/\\n\\n/g, "</p><p>")}</p>`;
-        
-        //     div.innerHTML = `<p><strong>${item.Question}</strong></p>${formattedAnswer}<br>`;
-        //     categoryDiv.appendChild(div);
-        // });
         categoryData.forEach(item => {
             const div = document.createElement("div");
             div.classList.add("faq-item");
