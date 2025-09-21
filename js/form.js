@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Disable button + show loading text
     submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting…";
+    submitBtn.textContent = "Sending...";
     submitBtn.style.opacity = "0.6";
     submitBtn.style.cursor = "not-allowed";
 

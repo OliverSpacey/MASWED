@@ -16,6 +16,8 @@ async function loadTSV(filePath) {
 async function displayData() {
     const data = await loadTSV("../data/faqs.tsv"); // Path to your TSV file
 
+    
+
     console.log("Parsed Data:", data); // Debugging step to see the structure of data
 
     const container = document.getElementById("output");
@@ -43,11 +45,43 @@ async function displayData() {
         categoryDiv.style.display = "none"; // Initially hide each category's content
 
         const categoryData = categorizedData[categoryId];
+        // categoryData.forEach(item => {
+        //     const div = document.createElement("div");
+        //     div.innerHTML = `<p><strong>${item.Question}</strong><br>${item["Answer"]}</p><br>`;
+        //     categoryDiv.appendChild(div);
+        // });
+        // categoryData.forEach(item => {
+        //     const div = document.createElement("div");
+        
+        //     // Replace literal "\n\n" in the TSV with paragraph breaks
+        //     const formattedAnswer = `<p>${item["Answer"]
+        //         .replace(/\\n\\n/g, "</p><p>")}</p>`;
+        
+        //     div.innerHTML = `<p><strong>${item.Question}</strong></p>${formattedAnswer}<br>`;
+        //     categoryDiv.appendChild(div);
+        // });
         categoryData.forEach(item => {
             const div = document.createElement("div");
-            div.innerHTML = `<p><strong>${item.Question}</strong><br>${item["Answer"]}</p><br>`;
+            div.classList.add("faq-item");
+        
+            // Turn escaped \n\n into paragraph breaks, and also handle real blank lines
+            const answerRaw = item["Answer"] || "";
+            const answerHtml = answerRaw
+                .replace(/\\n\\n/g, "</p><p>")     // escaped two-character sequence \n\n
+                .replace(/\r\n/g, "\n")            // normalize CRLF
+                .replace(/\n\s*\n/g, "</p><p>");   // real blank line(s)
+        
+            // Wrap the answer paragraphs inside a .answer container
+            const formattedAnswer = `<div class="answer"><p>${answerHtml}</p></div>`;
+        
+            // Give the question its own class so it won't get the indent
+            div.innerHTML = `<p class="question"><strong>${item.Question}</strong></p>${formattedAnswer}`;
+        
             categoryDiv.appendChild(div);
         });
+        
+        
+        
 
         container.appendChild(categoryDiv);
     });

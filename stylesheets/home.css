@@ -12,11 +12,24 @@
   h1 {
     text-align: center;
   }
-
-    .name-warning{
-      font-size: 100rem;
-    }
+  
+  .name-warning{
+    font-size: 100rem;
+  }
  
+  .charityList {
+    list-style-type: square;
+    text-align: left;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  .charityItem a {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: green;
+  }
 
   .timeline {
     position: relative;
@@ -28,6 +41,22 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 30px;
     font-family: 'Cormorant Garamond', serif
+  }
+
+  .contentCard {
+    position: relative;
+    margin: 2rem auto;
+    padding: 2rem 0;
+    width: 80%;
+    text-align: center;
+    background-color: rgba(255,255,255,0.95);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 30px;
+    font-family: 'Cormorant Garamond', serif
+  }
+
+  .contentCard p{
+    padding: 0 10% 0 10%;
   }
   
   .content {
@@ -146,7 +175,7 @@ nav {
   .flourish {
     font-family: 'Dancing Script', cursive;
     font-size: 305pt;
-    display: flex;
+    display: flexbox;
     justify-content: center;
     align-items: center;
     color: #b38600; 
@@ -162,6 +191,20 @@ nav {
     text-shadow: 4px 4px 4px rgba(255, 255, 255, 1);
     /* add text outline */    
 
+  }
+
+  .flourish p {
+    font-family: 'Great Vibes', cursive;
+    font-size: 20pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b38600; 
+    text-shadow: 4px 4px 4px rgba(255, 255, 255, 1);
+    padding-top: 0%;
+    margin-top: 0%;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
   }
 
   .flourish .swirl {
@@ -243,7 +286,7 @@ nav {
     flex-direction: column;
     padding: 2%;
     margin-top: 2%;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     width: 80%;
@@ -251,7 +294,7 @@ nav {
 
   .formBackground{
     padding: 5%;
-    background-color:rgba(255, 255, 255, 0.5);
+    background-color:rgba(255, 255, 255, 0.95);
     font-family: 'Great Vibes', cursive;
     font-size: 20pt;
   }
@@ -382,7 +425,7 @@ nav {
     background-color: #b7a700; /*#6a994e;  Green color matching your underline */
     color: white;
     font-size: 18px;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', serif;
     margin-top: 0;
     padding: 1% 1%;
     border-radius: 12px;
@@ -487,6 +530,42 @@ nav {
     font-family: 'Cormorant Garamond', serif;
     color: black;
   }
+
+  .category-content p {
+    text-indent: 2em; /* or 20px */
+  }
+
+  /* .category-content p {
+    text-indent: 2em; 
+    margin-top: 0.5em;
+  }
+  
+  /* Prevent the question (with <strong>) from being indented 
+  .category-content p strong {
+    text-indent: 0;
+    display: inline; 
+  }
+   */
+   /* indent only answer paragraphs */
+.category-content .answer p {
+  text-indent: 2em;   /* adjust to taste */
+  margin: 0 0 1em;
+}
+
+/* never indent the question */
+.category-content .question {
+  text-indent: 0;
+  margin: 0 0 0.5em;
+}
+
+.category-content .faq-item {
+  margin-bottom: 2em;
+  padding: 1em;
+  background: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
 
   #category-buttons button:hover {
     background-color: #b7a700;
@@ -636,7 +715,7 @@ nav {
   .flourish {
     font-family: 'Great Vibes', cursive;
     font-size: 305pt;
-    display: flex;
+    display: flexbox;
     justify-content: center;
     align-items: center;
     color: #b38600;
@@ -649,6 +728,21 @@ nav {
     align-items: center;
     color: #b38600; 
   }
+
+  .flourish p {
+    font-family: 'Great Vibes', cursive;
+    font-size: 20pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b38600; 
+    text-shadow: 4px 4px 4px rgba(255, 255, 255, 1);
+    padding-top: 0%;
+    margin-top: 0%;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+  }
+
 
   a {
     color: black;
@@ -690,6 +784,12 @@ nav {
 
   .scrollInfo {
     display: block;
+    text-align: center;
+    background-color: #faf3dd;
+    font-family: 'Cormorant Garamond', serif;
+    border-radius: 10px;
+    border-color: #000000;
+    border-style: solid;
   }
 
   .faqTitle {
@@ -711,7 +811,7 @@ nav {
     flex-direction: column;
     padding: 2%;
     margin-top: 2%;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     width: 80%;
@@ -862,7 +962,7 @@ nav {
     background-color: #6a994e; /* Green color matching your underline */
     color: white;
     font-size: 18px;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Cormorant Garamond', serif;
     margin-top: 10%;
     padding: 5% 7%;
     border: 2px solid #6a994e;
@@ -1002,5 +1102,23 @@ nav {
     font-size: 16px;
     font-family: 'Cormorant Garamond', serif;
     color: black;
+  }
+  .category-content .answer p {
+    text-indent: 2em;   /* adjust to taste */
+    margin: 0 0 1em;
+  }
+  
+  /* never indent the question */
+  .category-content .question {
+    text-indent: 0;
+    margin: 0 0 0.5em;
+  }
+  
+  .category-content .faq-item {
+    margin-bottom: 2em;
+    padding: 1em;
+    background: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
 }
