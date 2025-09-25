@@ -157,30 +157,45 @@
         const title = document.getElementById("category-title");
       
         function applyFooterState() {
-          if (title && title.textContent.trim().length > 0) {
-            // Category title has content → let CSS handle footer
+          if (!footer) return;
+      
+          if (window.innerWidth <= 820) {
+            if (title && title.textContent.trim().length > 0) {
+              // Category title has content → let CSS handle footer
+              footer.style.position = "";
+              footer.style.bottom = "";
+              footer.style.width = "";
+              footer.style.left = "";
+            } else {
+              // Title empty → fix footer to bottom
+              footer.style.position = "fixed";
+              footer.style.bottom = "0";
+              footer.style.left = "0";
+              footer.style.width = "100%";
+            }
+          } else {
+            // On larger screens, always let CSS handle it
             footer.style.position = "";
             footer.style.bottom = "";
             footer.style.width = "";
-          } else {
-            // Title is empty → stick footer to bottom
-            footer.style.position = "fixed";
-            footer.style.bottom = "0";
-            footer.style.left = "0";
-            footer.style.width = "100%";
+            footer.style.left = "";
           }
         }
       
-        // run once on load
+        // Run once on load
         applyFooterState();
       
-        // watch for title changes (in case your script fills it later)
+        // Re-run on resize
+        window.addEventListener("resize", applyFooterState);
+      
+        // Re-run if the title changes
         if (title) {
           const observer = new MutationObserver(applyFooterState);
           observer.observe(title, { childList: true, subtree: true, characterData: true });
         }
       });
       </script>
+      
       
       
       
@@ -216,7 +231,7 @@
       </div>     
 </body>
 <footer>
-  <p>Website by Oliver Spacey, 2025 | For assistance, please refer to the Contact page.</p>
+  <p>Website by Oliver Spacey, 2025 | For assistance, please refer to the <a class="clear" href="../Contact">Contact page</a>.</p>
 </footer>
 
 </html>
