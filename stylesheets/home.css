@@ -8,6 +8,28 @@
     padding: 5%;
     margin: 0;
   }
+  
+  iframe {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+
+  .clear {
+    color: blue;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #faf3dd;
+    color: black;
+    font-family: 'Cormorant Garamond', serif;
+    border-top: 2px solid black; /*Black underline*/
+    margin-top: 2rem;
+  }
 
   h1 {
     text-align: center;
@@ -67,12 +89,15 @@
   
 
 /* Desktop Navigation */
-@media (min-width: 768px) {
+@media (min-width: 820px) {
 
 nav {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
+  align-items: center;
   padding-bottom: 3%;
+  flex: 1;
 }
 
   nav ul {
@@ -155,6 +180,8 @@ nav {
     display: flex;
     /* padding: 0 5% 0 5%; */
     align-items: center;
+    /* justify-content: space-between; */
+
     background-color: #faf3dd;
     color: black;
     font-family: 'Cormorant Garamond', serif;
@@ -221,6 +248,20 @@ nav {
     font-family: 'Dancing Script', cursive;
   }
 
+  .sidebyside {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    gap: 2rem;
+  }
+
+  .profile-pic {
+    border-radius: 30%;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
   .faqTitle {
     display:flex;
@@ -365,17 +406,13 @@ nav {
   }
   #submit {
     transition: all 0.3s ease;
-    padding: 10px 20px;
+    padding: 3% 7%;
     border: none;
     border-radius: 6px;
     color: white;
-    background-color: #4CAF50; /* normal green */
+    background-color: #006504;
+    border: 2px solid #000000
   }
-  
-
-  /* #seperator {
-    padding: 0;
-  } */
 
   .separator {
     border: 10px solid #000000;
@@ -427,11 +464,12 @@ nav {
     font-size: 18px;
     font-family: 'Cormorant Garamond', serif;
     margin-top: 0;
-    padding: 1% 1%;
+    /* padding: 1% 1%; */
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #000000
   }
   
   /* Hover effect */
@@ -597,10 +635,11 @@ nav {
 }
 
 /* Mobile Styling */
-@media (max-width: 767px) {
+@media (max-width: 819px) {
   nav {
     justify-content: center;
     align-items: center;
+    flex: 1;
   }
 
   /* Hide the desktop menu */
@@ -612,7 +651,7 @@ nav {
   .dropbtn {
     background-color: #f7f3e9;
     color: #6a994e;
-    font-size: 18px;
+    font-size: 26px;
     font-family:'Times New Roman', Times, serif;
     padding: 10px 15px;
     border: 2px solid #6a994e;
@@ -620,6 +659,7 @@ nav {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 0;
   }
 
   /* Highlight only when dropdown is active */
@@ -673,7 +713,7 @@ nav {
     list-style: none;
     /* background-color: #faf3dd; Blush pink background */
     padding: 5%;
-    margin: 10% 0 0 0;
+    /* margin: 10% 0 0 0; */
     z-index: 0;
   }
 
@@ -699,17 +739,11 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure it stays above other content */
-    /* padding: 0 5% 0 5%; */
+    padding: 0 5% 0 5%;
     align-items: center;
     background-color: #faf3dd;
     color: black;
     font-family: 'Cormorant Garamond', serif;
-    /* background-image: url('../images/flowers_background.png');
-    background-position: left;
-    /* background-repeat: no-repeat; */
-    /* background-repeat: repeat-x;
-    background-position-y: bottom;
-    background-size: 100px;  */
   }
 
   .flourish {
@@ -720,10 +754,12 @@ nav {
     align-items: center;
     color: #b38600;
   }
+
   .flourish a {
     font-family: 'Great Vibes', cursive;
-    font-size: 35pt;
+    font-size: 30pt;
     display: flex;
+    margin-top: 5%;
     justify-content: center;
     align-items: center;
     color: #b38600; 
@@ -743,6 +779,13 @@ nav {
     margin-bottom: 0%;
   }
 
+  .profile-pic {
+    border-radius: 30%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
   a {
     color: black;
@@ -909,7 +952,8 @@ nav {
     border: none;
     border-radius: 6px;
     color: white;
-    background-color: #4CAF50; /* normal green */
+    background-color: #006504;
+    border: 2px solid #000000
   }
 
   #seperator {
