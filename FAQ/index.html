@@ -151,6 +151,40 @@
     <style src="../stylesheets/home.css"></style>
     <link rel="stylesheet" href="/stylesheets/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const footer = document.querySelector("footer");
+        const title = document.getElementById("category-title");
+      
+        function applyFooterState() {
+          if (title && title.textContent.trim().length > 0) {
+            // Category title has content → let CSS handle footer
+            footer.style.position = "";
+            footer.style.bottom = "";
+            footer.style.width = "";
+          } else {
+            // Title is empty → stick footer to bottom
+            footer.style.position = "fixed";
+            footer.style.bottom = "0";
+            footer.style.left = "0";
+            footer.style.width = "100%";
+          }
+        }
+      
+        // run once on load
+        applyFooterState();
+      
+        // watch for title changes (in case your script fills it later)
+        if (title) {
+          const observer = new MutationObserver(applyFooterState);
+          observer.observe(title, { childList: true, subtree: true, characterData: true });
+        }
+      });
+      </script>
+      
+      
+      
+
 </header>
 
 <body>
